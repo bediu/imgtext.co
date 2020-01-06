@@ -1,0 +1,71 @@
+@import './_variables.scss';
+@import './typography.scss';
+
+@import './items/button.scss';
+@import './items/range.scss';
+
+@import './theme/light.scss';
+@import './theme/dark.scss';
+
+@import './nav.scss';
+@import './message.scss';
+@import './sidebar.scss';
+@import './editor.scss';
+
+@import './cards.scss';
+
+
+ * {
+     box-sizing: border-box;
+     -webkit-touch-callout: none; /* iOS Safari */
+     -webkit-user-select: none; /* Safari */
+      -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+         -ms-user-select: none; /* Internet Explorer/Edge */
+             user-select: none; /* Non-prefixed version, currently*/ 
+}
+
+html, body, #app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#app {
+    font-family: 'Roboto', sans-serif;
+}
+
+button {
+    background: unset;
+    outline:none;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: unset;
+    height: unset;
+}
+
+.base {
+    display: flex;
+    position: relative;
+    top: 55px;
+    flex-direction: row;
+    height: calc(100% - 55px);
+}
+.sidebar-open {
+    .sidebar {
+        width: 236px !important;
+    }
+    .editor {
+        width: calc(100% - 236px);
+    }
+    .side-item {
+        transform: translateX(0px);
+    }
+    .card {
+        transform: translateX(0px);
+    }
+}
+
+.hide {
+    display: none;
+}

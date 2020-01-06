@@ -1,0 +1,38 @@
+.sidebar {
+    position: relative;
+    height: 100%;
+    width: 0px;
+    transition: width .25s ease;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.side-item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
+    transform: translateX(-236px);
+    transition: all .25s;
+}
+
+.side-ico {
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+}
+
+.side-text {
+    margin-left: 15px;
+    word-wrap: none;
+    white-space: pre;
+}
+
+.side-extra {
+    margin-top: 20px;
+}
+.side-extra .side-text {
+    font-weight: 500;
+}

@@ -1,0 +1,59 @@
+.message {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    z-index: 0;
+    
+    right: 50px;
+    
+    width: 400px;
+    border-radius: 4px;
+
+    transform: translateY(75px) scale(0.9);
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s;
+    
+}
+.message-show {
+    z-index: 9;
+    visibility: visible;
+    transform: translateY(95px) scale(1);
+    opacity: 0.9;
+
+    box-shadow:
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        0 100px 80px rgba(0, 0, 0, 0.07);
+}
+.message p {
+    padding: 15px;
+    color: $white !important;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    flex: 1;
+}
+.message svg {
+    fill: $white;
+    height: 35px;
+    width: 35px;
+    margin: 15px;
+    padding: 0px;
+    cursor: pointer;
+}
+.error {
+    background: #ff5252;
+}
+
+.success {
+    background: #27ae60;
+}
+
+.warning {
+    background: #ffb142;
+}
+
+.info {
+    background: #3498db;
+}

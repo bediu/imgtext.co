@@ -1,0 +1,38 @@
+$range-handle-size: 17px;
+$range-track-height: 3px;
+
+.range {
+  -webkit-appearance: none;
+  width: 150px;
+  height: $range-track-height;
+  border-radius: 5px;
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.range::-webkit-slider-thumb  {
+  appearance: none;
+  width: $range-handle-size;
+  height: $range-handle-size;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .1s;
+}
+.range::-moz-range-thumb {
+  width: $range-handle-size;
+  height: $range-handle-size;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all .1s;
+}
+
+// Firefox Overrides
+::-moz-range-track {
+    border: 0;
+}
+input::-moz-focus-inner,
+input::-moz-focus-outer { 
+  border: 0; 
+}

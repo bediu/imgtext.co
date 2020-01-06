@@ -1,0 +1,43 @@
+.nav-title {
+    font-size: 20px;
+    line-height: 1.5;
+}
+.title {
+    margin: 0px;
+    padding: 0px;
+    font-size: $title;
+	font-weight: 500;
+	letter-spacing: 0.3px;
+	line-height: 32px;
+	word-break: break-all;
+}
+
+.desc {
+	font-size: $desc;
+	font-weight: 400;
+	line-height: 22px;
+    letter-spacing: 0.11px;
+    margin: 0px;
+    padding: 0px;
+}
+.desc-m {
+	font-size: $desc-m !important;
+}
+
+.overline {
+	font-size: $overline;
+	font-weight: 400;
+	letter-spacing: 2.46px;
+	line-height: 16px;
+	text-transform: uppercase;
+}
+
+.link {
+	font-size: $desc;
+	font-weight: 400;
+	line-height: 22px;
+    letter-spacing: 0.11px;
+    margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+}

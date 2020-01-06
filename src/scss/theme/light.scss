@@ -1,0 +1,208 @@
+//main colors
+$primary: #426ff4;
+$secondary: #badc58;
+
+//main app
+$border: #ccc;//#e3e3e3;
+$app-bg: #f2f2f2;//#f1f5f7;
+//F3F3F3
+
+//main font colors
+$text: #3b3f4f;
+$text-light: rgba($text, 0.8);
+$text-lighter: rgba($text, 0.7);
+$link: #2980b9;
+
+//file upload
+$upload-border: #e3e3e3;
+$upload-svg-border: #ccc;
+$upload-border-size: 2px;
+
+//group buttons
+$group-button: $white;
+$group-svg: rgba($text, 0.9);
+$group-border: $border;
+
+//range
+$range-track: #e0e0e0;
+$range-track-hover: #c5c5c5;
+$range-handler: rgba($primary, 0.9);
+
+.light {
+
+    //app background
+    background: $app-bg;
+    color: $text;
+
+
+
+    //navigation
+    .nav {
+        background: $white;
+    }
+
+    .nav-title {
+        color: $text;
+        font-weight: 600;
+    }
+
+
+
+
+    //buttons
+    .btn-ico {
+        fill: $primary;
+    }
+    .btn-git {
+        fill: $text !important;
+    }
+    .btn {
+        background: $primary;
+        color: $white;
+    }
+
+    .btn>svg {
+        fill: $white;
+    }
+
+    .btn:hover {
+        background: rgba($primary, 0.9);
+    }
+
+    .btn:active {
+        background: rgba($primary, 0.7);
+    }
+
+
+
+
+    //button groups
+    .btn-i {
+        border-top: 1px solid $group-border;
+        border-bottom: 1px solid $group-border;
+        border-right: 1px solid $group-border;
+        background: $group-button;
+        color: $group-svg;
+    }
+
+    .btn-i>svg {
+        fill: $group-svg;
+    }
+
+    .btn-group>button:first-child {
+        border-left: 1px solid $group-border;
+    }
+
+    .btn-i:hover {
+        background: rgba($black, 0.1);
+    }
+
+    .btn-i:active {
+        background-color: rgba($black, 0.2);
+    }
+
+
+
+
+    //sidebar
+    .sidebar {
+        background: $white;
+        border-right: 1px solid $border;
+    }
+
+    .side-item:hover {
+        background: rgba($black, 0.05);
+    }
+
+    .side-item:active {
+        background: rgba($black, 0.2);
+    }
+
+    .side-ico {
+        fill: $primary;
+    }
+
+    .side-text {
+        font-size: $desc;
+        color: $text-lighter;
+    }
+
+
+
+
+    //file upload
+    .editor-drop {
+        border: $upload-border-size solid $upload-border;
+        background: $white;
+    }
+    .editor-drag {
+        opacity: 0.6;
+        border: 4px dashed rgba($primary, 0.4);
+    }
+    .d-info > svg {
+        fill: $border;
+    }
+    
+
+
+
+
+    //typography
+    .desc {
+        color: $text-light;
+    }
+
+    .overline {
+        color: $text-lighter;
+    }
+
+
+
+    hr {
+        display: block;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        border: 0px;
+        height: 1px;
+        background: $border;
+    }
+    .link {
+        color: $link;
+    }
+
+
+
+    //range slider
+    .range {
+        background: $range-track;
+    }
+    //range handdler
+    .range::-webkit-slider-thumb {
+        background: $range-handler; 
+    }
+    .range::-moz-range-thumb {
+        background: $range-handler;
+    }
+    .range::-moz-range-thumb:hover {
+        width: 23px;
+        height: 23px;
+    }
+    .range::-webkit-slider-thumb:hover {
+        width: 23px;
+        height: 23px;
+    }
+
+
+    //track
+    .range:hover {
+        background: $range-track-hover;
+    }
+    ::-moz-range-track {
+        background: $range-track-hover;
+    }
+    .range-group svg {
+        fill: $group-svg;
+        cursor: pointer;
+    }
+}

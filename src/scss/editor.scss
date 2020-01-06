@@ -1,0 +1,70 @@
+.editor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    transition: width .25s ease;
+}
+
+
+
+//file upload box
+.editor-drop {
+    width: 60%;
+    border-radius: 4px;
+    transform: translateY(-30%);
+    transition: all .1s;
+}
+
+.drop-content {
+    padding: 10px 20px 20px 20px;
+}
+.d-over {
+    padding-top: 25px;
+}
+.d-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.d-info > svg {
+    width: 140px;
+    height: 140px;
+}
+
+
+
+//image settings
+.btns-flip {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+}
+.btns-rotate {
+    position: absolute;
+    bottom: 20px;
+    left: 130px;
+}
+.btns-size {
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
+}
+
+.range-group {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 25px;
+    right: 175px;
+    width: 220px;
+}
+.range-group > svg {
+    cursor: pointer;
+}

@@ -1,0 +1,26 @@
+.card {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 235px;
+    padding-bottom: 20px;
+    transform: translateX(-236px);
+    transition: all .4s;
+    .desc {
+        padding: 0px 15px;
+    }
+    .link {
+        display: block;
+        padding: 20px 15px 0px 15px;
+    }
+}
+.card-content {
+    padding: 15px 15px 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.card-img {
+    width: 35px;
+    height: 35px;
+}
