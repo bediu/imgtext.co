@@ -11,6 +11,7 @@
 @import './message.scss';
 @import './sidebar.scss';
 @import './editor.scss';
+@import './image.scss';
 
 @import './cards.scss';
 
@@ -30,6 +31,7 @@ html, body, #app {
     margin: 0;
     padding: 0;
 }
+
 #app {
     font-family: 'Roboto', sans-serif;
 }
@@ -53,7 +55,7 @@ button {
 }
 .sidebar-open {
     .sidebar {
-        width: 236px !important;
+        max-width: 236px !important;
     }
     .editor {
         width: calc(100% - 236px);

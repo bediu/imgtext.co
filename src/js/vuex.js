@@ -21,7 +21,18 @@ export default new Vuex.Store({
     imageFile: {
       state: false,
       name: null,
-      size: null,
+      length: null, //bytes
+      size: {
+        h: null,
+        w: null
+      },
+      preview: {
+        size: {
+          h: null,
+          w: null
+        },
+        zoom: null
+      },
       type: null,
       raw: null,
       base64: null
@@ -36,7 +47,7 @@ export default new Vuex.Store({
       state.newFileDrag = res;
     },
     initImageFile(state, image) {
-      this.state.imageFile = image;
+      state.imageFile = image;
     }
 
   },

@@ -1,13 +1,15 @@
 <template>
 
-  <div class="editor">
+  <div class="editor" id="imgEditor">
 
     <Uploader />
+    <ImageComp />
+
 
     <!-- flip -->
-    <div class="btns-flip btn-group">
+    <div class="btns-flip btn-group" :class="{'btn-group-dis' : !this.$store.state.imageFile.state}">
       <!-- horizontal -->
-      <button class="btn-i">
+      <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
           id="mdi-flip-horizontal" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -15,7 +17,7 @@
         </svg>
       </button>
       <!-- vertical -->
-      <button class="btn-i">
+      <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
           id="mdi-flip-vertical" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -25,9 +27,9 @@
     </div>
 
     <!-- rotate -->
-    <div class="btns-rotate btn-group">
+    <div class="btns-rotate btn-group" :class="{'btn-group-dis' : !this.$store.state.imageFile.state}">
       <!-- rotate left -->
-      <button class="btn-i">
+      <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
           id="mdi-rotate-left" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -35,7 +37,7 @@
         </svg>
       </button>
       <!-- rotate right -->
-      <button class="btn-i">
+      <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
           id="mdi-rotate-right" width="24" height="24" viewBox="0 0 24 24">
           <path
@@ -44,28 +46,28 @@
       </button>
     </div>
 
-    <!-- zoom -->
-    <div class="btn-group btns-size">
-      <button class="btn-i">
+    <!-- fit -->
+    <div class="btn-group btns-size" :class="{'btn-group-dis' : !this.$store.state.imageFile.state}">
+      <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
           id="mdi-fit-to-page-outline" width="24" height="24" viewBox="0 0 24 24">
           <path
             d="M20,2H4C2.89,2 2,2.89 2,4V20C2,21.11 2.89,22 4,22H20C21.11,22 22,21.11 22,20V4C22,2.89 21.11,2 20,2M20,20H4V4H20M13,8V10H11V8H9L12,5L15,8M16,15V13H14V11H16V9L19,12M10,13H8V15L5,12L8,9V11H10M15,16L12,19L9,16H11V14H13V16" />
         </svg>
       </button>
-      <button class="btn-i btn-t">
+      <button class="btn-i btn-t" :disabled="!this.$store.state.imageFile.state">
         100%
       </button>
     </div>
 
-    <!-- fit -->
-    <div class="range-group">
+    <!-- zoom -->
+    <div class="range-group" :class="{'range-group-dis' : !this.$store.state.imageFile.state}">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
         id="mdi-plus-box-outline" width="24" height="24" viewBox="0 0 24 24">
         <path
           d="M19,19V5H5V19H19M19,3A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5C3,3.89 3.9,3 5,3H19M11,7H13V11H17V13H13V17H11V13H7V11H11V7Z" />
       </svg>
-      <input class="range" type="range" value="50" min="0" max="100">
+      <input class="range" :v-model="this.$store.state.imageFile.preview.zoom" :disabled="!this.$store.state.imageFile.state" type="range" value="50" min="1" max="100">
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
         id="mdi-minus-box-outline" width="24" height="24" viewBox="0 0 24 24">
         <path
@@ -73,18 +75,22 @@
       </svg>
     </div>
 
+
+
   </div>
 
 </template>
 
 <script>
   import Uploader from './Uploader.vue'
+  import ImageComp from './ImageComp.vue'
+
   export default {
     name: 'Editor',
     components: {
-      Uploader
+      Uploader,
+      ImageComp
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>

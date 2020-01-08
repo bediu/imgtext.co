@@ -28,6 +28,15 @@ $range-track-height: 3px;
   transition: all .1s;
 }
 
+.range::-moz-range-thumb:hover {
+  width: 23px;
+  height: 23px;
+}
+.range::-webkit-slider-thumb:hover {
+  width: 23px;
+  height: 23px;
+}
+
 // Firefox Overrides
 ::-moz-range-track {
     border: 0;

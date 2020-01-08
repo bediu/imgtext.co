@@ -3,8 +3,8 @@ $primary: #426ff4;
 $secondary: #badc58;
 
 //main app
-$border: #ccc;//#e3e3e3;
-$app-bg: #f2f2f2;//#f1f5f7;
+$border: #ccc; //#e3e3e3;
+$app-bg: #f2f2f2; //#f1f5f7;
 //F3F3F3
 
 //main font colors
@@ -27,6 +27,16 @@ $group-border: $border;
 $range-track: #e0e0e0;
 $range-track-hover: #c5c5c5;
 $range-handler: rgba($primary, 0.9);
+
+
+
+//disabled group buttons
+$group-button-disabled: #fff;//#e6e6e6;
+$group-svg-disabled: #bcbcbc;
+
+//disabled range
+$range-handler-disabled: #9ab1f3;
+
 
 .light {
 
@@ -53,9 +63,11 @@ $range-handler: rgba($primary, 0.9);
     .btn-ico {
         fill: $primary;
     }
+
     .btn-git {
         fill: $text !important;
     }
+
     .btn {
         background: $primary;
         color: $white;
@@ -124,7 +136,7 @@ $range-handler: rgba($primary, 0.9);
 
     .side-text {
         font-size: $desc;
-        color: $text-lighter;
+        color: $text-light;
     }
 
 
@@ -135,14 +147,16 @@ $range-handler: rgba($primary, 0.9);
         border: $upload-border-size solid $upload-border;
         background: $white;
     }
+
     .editor-drag {
         opacity: 0.6;
         border: 4px dashed rgba($primary, 0.4);
     }
-    .d-info > svg {
+
+    .d-info>svg {
         fill: $border;
     }
-    
+
 
 
 
@@ -167,6 +181,7 @@ $range-handler: rgba($primary, 0.9);
         height: 1px;
         background: $border;
     }
+
     .link {
         color: $link;
     }
@@ -177,32 +192,94 @@ $range-handler: rgba($primary, 0.9);
     .range {
         background: $range-track;
     }
+
     //range handdler
     .range::-webkit-slider-thumb {
-        background: $range-handler; 
+        background: $range-handler;
     }
+
     .range::-moz-range-thumb {
         background: $range-handler;
     }
-    .range::-moz-range-thumb:hover {
-        width: 23px;
-        height: 23px;
-    }
-    .range::-webkit-slider-thumb:hover {
-        width: 23px;
-        height: 23px;
-    }
-
 
     //track
     .range:hover {
         background: $range-track-hover;
     }
+
     ::-moz-range-track {
         background: $range-track-hover;
     }
+
     .range-group svg {
         fill: $group-svg;
         cursor: pointer;
     }
+
+
+
+
+    //disabled sidebar items
+    .sidebar-dis {
+        .side-text {
+            color: $text-lighter !important;
+        }
+        .side-ico  {
+            fill: rgba($primary, 0.7) !important;
+        }
+    }
+
+    //disabled button group
+    .btn-group-dis {
+        .btn-i {
+            cursor: unset !important;
+            background: $group-button-disabled !important;
+            color: $group-svg-disabled !important;
+        }
+
+        .btn-i:hover {
+            background: $group-button-disabled !important;
+        }
+
+        .btn-i>svg {
+            fill: $group-svg-disabled !important;
+        }
+    }
+
+    //disabled range handdler
+    .range-group-dis {
+        .range::-webkit-slider-thumb {
+            background: $range-handler-disabled !important;
+            cursor: unset !important;
+        }
+
+        .range::-moz-range-thumb {
+            background: $range-handler-disabled !important;
+            cursor: unset !important;
+        }
+
+        .range::-moz-range-thumb:hover {
+            width: 17px !important;
+            height: 17px !important;
+        }
+
+        .range::-webkit-slider-thumb:hover {
+            width: 17px !important;
+            height: 17px !important;
+        }
+
+        //disabled range track
+        //track
+        .range:hover {
+            background: $range-track !important;
+        }
+
+        svg {
+            fill: $group-svg-disabled !important;
+            cursor: unset !important;
+        }
+
+    }
+
+
 }
