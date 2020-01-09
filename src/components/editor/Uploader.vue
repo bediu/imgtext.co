@@ -36,6 +36,10 @@
 </template>
 
 <script>
+  import {
+    calculatePreviewSize
+  } from '../../js/methods/previewSize';
+
   export default {
     name: 'Uploader',
     components: {
@@ -83,16 +87,17 @@
           .then(base64 => {
 
             //promise read image height & width
-            this.readImageSize(base64)
-              .then(size => {
+            this.readImage(base64)
+              .then(image => {
 
                 //load image in browser
                 this.loadImage({
                   name: browsedFiles[0].name,
                   length: browsedFiles[0].size,
-                  size: size,
+                  size: image.size,
                   type: browsedFiles[0].type,
-                  base64: base64
+                  base64: base64,
+                  raw: image.raw
                 })
 
               });
@@ -104,17 +109,17 @@
       //drag and drop
       fileDrag() {
         if (!this.$store.state.newFileDrag) {
-          this.$store.commit('newFileDragM', true);
+          this.$store.commit('setNewFileDrag', true);
         }
       },
       fileLeave() {
         if (this.$store.state.newFileDrag) {
-          this.$store.commit('newFileDragM', false);
+          this.$store.commit('setNewFileDrag', false);
         }
       },
       fileDrop(e) {
         if (!this.$store.state.newFile) {
-          this.$store.commit('newFileDragM', false);
+          this.$store.commit('setNewFileDrag', false);
           var droppedFiles = e.dataTransfer.files;
 
           //failed to read dropped file
@@ -163,17 +168,18 @@
           this.readBASE64(droppedFiles[0])
             .then(base64 => {
 
-              //promise read image height & width
-              this.readImageSize(base64)
-                .then(size => {
+              //promise read image height & width & raw Image obj
+              this.readImage(base64)
+                .then(image => {
 
                   //load image in browser
                   this.loadImage({
                     name: droppedFiles[0].name,
                     length: droppedFiles[0].size,
-                    size: size,
+                    size: image.size,
                     type: droppedFiles[0].type,
-                    base64: base64
+                    base64: base64,
+                    raw: image.raw
                   })
 
                 });
@@ -210,16 +216,19 @@
           }
         });
       },
-      readImageSize(base64) {
+      readImage(base64) {
         return new Promise((resolve, reject) => {
           var i = new Image();
           i.src = base64;
 
           i.onload = () => {
             resolve({
-              h: i.naturalHeight,
-              w: i.naturalWidth
-            })
+              size: {
+                h: i.naturalHeight,
+                w: i.naturalWidth
+              },
+              raw: i
+            });
           }
 
         });
@@ -227,41 +236,30 @@
       loadImage(image) {
 
         //get editor size
-        var e = document.getElementById('imgEditor');
-        var editorHeight = e.scrollHeight - 150; //150px padding
-        var editorWidth = e.scrollWidth - 150; //150px padding
+        var editorHeight = this.$store.state.editorElement.scrollHeight - 150; //150px padding
+        var editorWidth = this.$store.state.editorElement.scrollWidth - 150; //150px padding
 
-        var previewHeight = image.size.h;
-        var previewWidth = image.size.w;
+        //calculate preview size
+        var previewSize = calculatePreviewSize(editorHeight, editorWidth, image.size.h, image.size.w);
 
-        //scale for height
-        if (image.size.h > editorHeight) {
-          previewHeight = editorHeight;
-          previewWidth = (previewHeight * image.size.w) / image.size.h;
-        }
-        //rescale for width
-        if (previewWidth > editorWidth) {
-          previewWidth = editorWidth;
-          previewHeight = (previewWidth * image.size.h) / image.size.w;
-        }
-
-        this.$store.commit('initImageFile', {
+        this.$store.dispatch('initImage', {
           state: true,
           name: image.name,
           length: image.length,
+          draggable: false,
           size: {
             h: image.size.h,
             w: image.size.w
           },
           preview: {
             size: {
-              h: previewHeight,
-              w: previewWidth
+              h: previewSize.h,
+              w: previewSize.w
             },
             zoom: 50
           },
           type: image.type,
-          raw: null,
+          raw: image.raw,
           base64: image.base64
         });
 
