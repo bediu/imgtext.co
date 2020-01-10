@@ -19,10 +19,10 @@
         name: 'Fit',
         methods: {
             fit() {
-                this.$store.commit('setImgFitToEditor')
+                this.$store.commit('setImgFitToEditor');
             },
             realSize() { //100%
-                this.$store.commit('setImgRealSize')
+                this.$store.commit('setImgRealSize');
             }   
         }
     }

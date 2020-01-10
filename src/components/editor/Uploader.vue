@@ -37,8 +37,8 @@
 
 <script>
   import {
-    calculatePreviewSize
-  } from '../../js/methods/previewSize';
+    calculateFitSize
+  } from '../../js/methods/helpers';
 
   export default {
     name: 'Uploader',
@@ -240,24 +240,33 @@
         var editorWidth = this.$store.state.editorElement.scrollWidth - 150; //150px padding
 
         //calculate preview size
-        var previewSize = calculatePreviewSize(editorHeight, editorWidth, image.size.h, image.size.w);
+        var fitSize = calculateFitSize(editorHeight, editorWidth, image.size.h, image.size.w);
 
         this.$store.dispatch('initImage', {
           state: true,
           name: image.name,
           length: image.length,
           draggable: false,
-          size: {
+          fit: true,
+
+          realSize: {
             h: image.size.h,
             w: image.size.w
           },
-          preview: {
-            size: {
-              h: previewSize.h,
-              w: previewSize.w
-            },
-            zoom: 50
+          fitSize: {
+            h: fitSize.h,
+            w: fitSize.w
           },
+          size: {
+            h: fitSize.h,
+            w: fitSize.w
+          },
+
+          zoom: {
+            value: 5,
+            state: false
+          },
+          
           type: image.type,
           raw: image.raw,
           base64: image.base64

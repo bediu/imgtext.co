@@ -1,21 +1,21 @@
-export function canvasDrawFit(canvas, rawImage, height, width) {
-
+export function canvasDraw(canvas, context, rawImage, height, width) {
     canvas.height = height;
     canvas.width = width;
-    canvas.getContext('2d').drawImage(rawImage, 0, 0, width, height);
-
+    canvas.width = canvas.width;
+    context.drawImage(rawImage, 0, 0, width, height);
 }
 
-export function canvasDrawReal(canvas, rawImage, height, width, imageHeight, imageWidth) {
+export function canvasDrawRealSize(canvas, context, rawImage, height, width, imageHeight, imageWidth) {
 
     canvas.height = height;
     canvas.width = width;
     canvas.width = canvas.width;
-    canvas.getContext('2d').clearRect(0, 0, width, height);
-    canvas.getContext('2d').drawImage(rawImage, 0, 0, imageWidth, imageHeight);
+    context.clearRect(0, 0, width, height);
+    context.drawImage(rawImage, 0, 0, imageWidth, imageHeight);
 
 }
 
+export function canvasDrawDrag() {}
 
 export function canvasPrepareTransforms(context) {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');

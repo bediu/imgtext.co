@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {
-  calculatePreviewSize
-} from './methods/previewSize';
+  calculateFitSize
+} from './methods/helpers';
 import {
-  canvasDrawFit,
-  canvasDrawReal
+  canvasDraw,
+  canvasDrawRealSize
 } from './methods/canvas';
 
 Vue.use(Vuex)
@@ -30,25 +30,35 @@ export default new Vuex.Store({
 
     //main image object
     imageFile: {
+
       state: false,
       name: null,
       length: null, //bytes
       draggable: false,
-      size: { //real size
+      fit: true,
+      
+      realSize: {
         h: null,
         w: null
       },
-      preview: {
-        size: { //size in editor
-          h: null,
-          w: null
-        },
-        zoom: null
+      fitSize: {
+        h: null,
+        w: null
       },
+      size: { //in editor
+        h: null,
+        w: null
+      },
+
+      zoom: { //zoom size
+        state: false,
+        value: null
+      },
+
       type: null,
       raw: null,
       base64: null
-    }
+    },
 
   },
   mutations: {
@@ -72,30 +82,70 @@ export default new Vuex.Store({
     },
 
     //editor settings
+    setZoom(state, zoom) {
+      
+      state.imageFile.zoom.state = true;
+      state.imageFile.zoom.value = parseInt(zoom.value);
+      state.imageFile.size.h = zoom.h;
+      state.imageFile.size.w = zoom.w;
+      state.imageFile.draggable = zoom.shouldDrag;
+      
+      canvasDraw(state.canvasElement, 
+        state.canvasContext, 
+        state.imageFile.raw, 
+        zoom.h, 
+        zoom.w);
+
+    },
     setImgFitToEditor(state) {
       
-      state.imageFile.preview.size = calculatePreviewSize(state.editorElement.offsetHeight - 150, 
+      state.imageFile.size
+       = calculateFitSize(state.editorElement.offsetHeight - 150, 
                            state.editorElement.offsetWidth - 150,
-                           state.imageFile.size.h, 
-                           state.imageFile.size.w);
+                           state.imageFile.realSize.h, 
+                           state.imageFile.realSize.w);
       
-      canvasDrawFit(state.canvasElement, state.imageFile.raw, state.imageFile.preview.size.h, state.imageFile.preview.size.w);
-      state.imageFile.draggable = false;
+      canvasDraw(state.canvasElement,
+        state.canvasContext, 
+        state.imageFile.raw, 
+        state.imageFile.fitSize.h, 
+        state.imageFile.fitSize.w);
+      
+      state.imageFile.size = {
+        h: state.imageFile.fitSize.h,
+        w: state.imageFile.fitSize.w
+      }
 
+      state.imageFile.draggable = false;
+      state.imageFile.fit = true;
+      state.imageFile.zoom.state = false;
+      state.imageFile.zoom.value = 5;
+      
     },
     setImgRealSize(state) {
 
-      canvasDrawReal(state.canvasElement, 
+      canvasDrawRealSize(state.canvasElement, 
+        state.canvasContext,
         state.imageFile.raw, 
         state.editorElement.offsetHeight, 
         state.editorElement.offsetWidth,
-        state.imageFile.size.h, 
-        state.imageFile.size.w);
+        state.imageFile.realSize.h, 
+        state.imageFile.realSize.w);
 
-      if (state.imageFile.size.h > state.editorElement.offsetHeight || state.imageFile.size.w > state.editorElement.offsetHeight) {
+      state.imageFile.size = {
+        h: state.imageFile.realSize.h,
+        w: state.imageFile.realSize.w
+      }
+
+      //determine if new size should be draggable
+      if (state.imageFile.realSize.h > state.editorElement.offsetHeight || state.imageFile.realSize.w > state.editorElement.offsetHeight) {
         state.imageFile.draggable = true;
       }
-      
+
+      state.imageFile.fit = false;
+      state.imageFile.zoom.state = false;
+      state.imageFile.zoom.value = 5;
+
     }
 
   },
@@ -123,7 +173,12 @@ export default new Vuex.Store({
     initImage(state, image) {
       
       this.state.imageFile = image;
-      canvasDrawFit(this.state.canvasElement, this.state.imageFile.raw, this.state.imageFile.preview.size.h, this.state.imageFile.preview.size.w);
+      canvasDraw(
+        this.state.canvasElement, 
+        this.state.canvasContext,
+        this.state.imageFile.raw, 
+        this.state.imageFile.fitSize.h, 
+        this.state.imageFile.fitSize.w);
       
     }
     
