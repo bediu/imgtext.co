@@ -50,16 +50,25 @@
 
 
 //image settings
-.btns-flip {
+.btns-left {
+    display: flex;
+    flex-direction: row;
     position: absolute;
     bottom: 20px;
     left: 30px;
+}
+
+.btns-flip {
+    position: absolute;
+    bottom: 20px;
+    right: 405px;
 }
 .btns-size {
     position: absolute;
     bottom: 20px;
     right: 30px;
 }
+
 
 .range-group {
     position: absolute;
@@ -68,9 +77,10 @@
     align-items: center;
     justify-content: space-between;
     bottom: 25px;
-    right: 175px;
+    right: 155px;
     width: 220px;
 }
+
 .range-group > svg {
     cursor: pointer;
 }

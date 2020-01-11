@@ -7,9 +7,11 @@
 
     <!-- settings -->
     <div class="editor-footer">
+      <SaveAndReset/>
       <Flip />
       <Zoom />
-      <Fit />
+      <Size />
+
     </div>
 
 
@@ -21,18 +23,20 @@
   import Uploader from './Uploader.vue'
   import ImagePreview from './ImagePreview.vue'
 
+  import SaveAndReset from './settings/SaveAndReset.vue'
   import Flip from './settings/Flip.vue'
   import Zoom from './settings/Zoom.vue'
-  import Fit from './settings/Fit.vue'
+  import Size from './settings/Size.vue'
 
   export default {
     name: 'Editor',
     components: {
       Uploader,
       ImagePreview,
+      SaveAndReset,
       Flip,
       Zoom,
-      Fit
+      Size
     },
     methods: {},
     mounted() {

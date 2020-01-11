@@ -20,7 +20,7 @@ $upload-border-size: 2px;
 
 //group buttons
 $group-button: $white;
-$group-svg: rgba($text, 0.9);
+$group-svg: rgba($text, 0.60);
 $group-border: $border;
 
 //range
@@ -111,6 +111,9 @@ $range-handler-disabled: #9ab1f3;
 
     .btn-i:active {
         background-color: rgba($black, 0.2);
+    }
+    .btn-save {
+        color: rgba($text, 1) !important;
     }
 
 

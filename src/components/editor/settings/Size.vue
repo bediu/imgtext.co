@@ -16,7 +16,7 @@
 </template>
 <script>
     export default {
-        name: 'Fit',
+        name: 'Size',
         methods: {
             fit() {
                 this.$store.commit('setImgFitToEditor');

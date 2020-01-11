@@ -41,8 +41,6 @@
     height: 24px;
 }
 
-
-
 //button groups (flip etc)
 .btn-group {
     display: flex;
@@ -68,7 +66,8 @@
     transition: background-color .3s;
 }
 .btn-t {
-    width: 50px;
+    width: unset;
+    padding: 0px 10px;
     text-align: center;
     font-weight: 600;
 }
@@ -77,4 +76,9 @@
     top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
+}
+
+.btn-save {
+    border-top-left-radius: 12px !important;
+    border-bottom-left-radius: 12px !important;
 }
