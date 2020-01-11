@@ -1,7 +1,7 @@
 <template>
     <div class="btns-flip btn-group" :class="{'btn-group-dis' : !this.$store.state.imageFile.state}">
         <!-- horizontal -->
-        <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
+        <button @click="flipVertical" class="btn-i" :disabled="!this.$store.state.imageFile.state">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                 id="mdi-flip-horizontal" width="24" height="24" viewBox="0 0 24 24">
                 <path
@@ -9,7 +9,7 @@
             </svg>
         </button>
         <!-- vertical -->
-        <button class="btn-i" :disabled="!this.$store.state.imageFile.state">
+        <button @click="flipHorizontal" class="btn-i" :disabled="!this.$store.state.imageFile.state">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
                 id="mdi-flip-vertical" width="24" height="24" viewBox="0 0 24 24">
                 <path
@@ -22,7 +22,12 @@
     export default {
         name: 'Flip',
         methods: {
-
+            flipVertical() {
+                this.$store.commit('setFlip', 'x');
+            },
+            flipHorizontal() {
+                this.$store.commit('setFlip', 'y');
+            }
         }
     }
 </script>

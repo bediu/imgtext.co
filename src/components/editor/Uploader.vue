@@ -249,6 +249,9 @@
           draggable: false,
           fit: true,
 
+          flipX: 0,
+          flipY: 0,
+
           realSize: {
             h: image.size.h,
             w: image.size.w

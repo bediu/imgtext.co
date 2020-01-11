@@ -8,7 +8,6 @@
     <!-- settings -->
     <div class="editor-footer">
       <Flip />
-      <Rotate />
       <Zoom />
       <Fit />
     </div>
@@ -23,7 +22,6 @@
   import ImagePreview from './ImagePreview.vue'
 
   import Flip from './settings/Flip.vue'
-  import Rotate from './settings/Rotate.vue'
   import Zoom from './settings/Zoom.vue'
   import Fit from './settings/Fit.vue'
 
@@ -33,7 +31,6 @@
       Uploader,
       ImagePreview,
       Flip,
-      Rotate,
       Zoom,
       Fit
     },

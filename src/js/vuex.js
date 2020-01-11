@@ -5,7 +5,8 @@ import {
 } from './methods/helpers';
 import {
   canvasDraw,
-  canvasDrawRealSize
+  canvasDrawRealSize,
+  canvasFlip
 } from './methods/canvas';
 
 Vue.use(Vuex)
@@ -36,7 +37,10 @@ export default new Vuex.Store({
       length: null, //bytes
       draggable: false,
       fit: true,
-      
+
+      flipX: 0,
+      flipY: 0,
+
       realSize: {
         h: null,
         w: null
@@ -145,6 +149,17 @@ export default new Vuex.Store({
       state.imageFile.fit = false;
       state.imageFile.zoom.state = false;
       state.imageFile.zoom.value = 5;
+
+    },
+    setFlip(state, side) {
+
+      var flip = canvasFlip(state.canvasElement,
+        side,
+        state.imageFile.flipX,
+        state.imageFile.flipY);
+        
+        state.imageFile.flipX = flip.x;
+        state.imageFile.flipY = flip.y;
 
     }
 

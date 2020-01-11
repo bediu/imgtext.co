@@ -7,7 +7,6 @@
 
 <script>
   import {
-    initCanvasTransforms,
     canvasPrepareTransforms
   } from './../../js/methods/canvas'
 

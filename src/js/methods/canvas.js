@@ -10,12 +10,38 @@ export function canvasDrawRealSize(canvas, context, rawImage, height, width, ima
     canvas.height = height;
     canvas.width = width;
     canvas.width = canvas.width;
+    
     context.clearRect(0, 0, width, height);
     context.drawImage(rawImage, 0, 0, imageWidth, imageHeight);
 
 }
 
-export function canvasDrawDrag() {}
+export function canvasFlip(canvas, side, curX, curY) {
+    
+    if (side === 'x') {
+        if (curX === 180) {
+            curX = 0;
+        } else {
+            curX = 180;
+        }
+    }
+    else {
+        if (curY === 180) {
+            curY = 0;
+        } else {
+            curY = 180;
+        }
+    }
+
+    canvas.style.transform = 'translateY(-50%) translateX(-50%) rotateX(' + curX + 'deg) rotateY(' + curY + 'deg)'
+    
+    return {
+        x: curX,
+        y: curY
+    }
+
+}
+
 
 export function canvasPrepareTransforms(context) {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
