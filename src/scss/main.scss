@@ -2,7 +2,10 @@
 @import './typography.scss';
 
 @import './items/button.scss';
+@import './items/input.scss';
 @import './items/range.scss';
+@import './items/fontselect.scss';
+
 
 @import './theme/light.scss';
 @import './theme/dark.scss';
@@ -12,9 +15,9 @@
 @import './sidebar.scss';
 @import './editor.scss';
 @import './canvas.scss';
+@import './features.scss';
 
 @import './cards.scss';
-
 
  * {
      box-sizing: border-box;

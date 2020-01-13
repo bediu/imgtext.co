@@ -20,7 +20,7 @@ $upload-border-size: 2px;
 
 //group buttons
 $group-button: $white;
-$group-svg: rgba($text, 0.60);
+$group-svg: rgba($text, 0.6);
 $group-border: $border;
 
 //range
@@ -31,11 +31,23 @@ $range-handler: rgba($primary, 0.9);
 
 
 //disabled group buttons
-$group-button-disabled: #fff;//#e6e6e6;
+$group-button-disabled: #fff; //#e6e6e6;
 $group-svg-disabled: #bcbcbc;
 
 //disabled range
 $range-handler-disabled: #9ab1f3;
+
+//input
+$input: #f4f4f4;
+
+//features
+$feature: $white;
+$feature-border: $border;
+$feature-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+$feature-svg: rgba($black, 0.6);
+$font-list: $white;
 
 
 .light {
@@ -112,6 +124,7 @@ $range-handler-disabled: #9ab1f3;
     .btn-i:active {
         background-color: rgba($black, 0.2);
     }
+
     .btn-save {
         color: rgba($text, 1) !important;
     }
@@ -159,6 +172,7 @@ $range-handler-disabled: #9ab1f3;
     .d-info>svg {
         fill: $border;
     }
+
     .editor-footer {
         background: rgba($app-bg, 0.95);
     }
@@ -230,7 +244,8 @@ $range-handler-disabled: #9ab1f3;
         .side-text {
             color: $text-lighter !important;
         }
-        .side-ico  {
+
+        .side-ico {
             fill: rgba($primary, 0.7) !important;
         }
     }
@@ -287,5 +302,48 @@ $range-handler-disabled: #9ab1f3;
 
     }
 
+
+
+    //edit
+    .text-input>input {
+        background: $white;
+        color: $text;
+        border-bottom: 1px solid $border;
+    }
+
+    .text-input>input:hover {
+        background: rgba($text, 0.1);
+    }
+
+    .text-input>input:focus {
+        border-bottom: 1px solid rgba($text, 1);
+        background: rgba($text, 0.1);
+    }
+
+    .text-input>.label {
+        color: $text-light;
+    }
+
+    .feature {
+        background: $feature;
+        border-top: 1px solid $feature-border;
+        border-bottom: 1px solid $feature-border;
+        border-left: 1px solid $feature-border;
+        box-shadow: $feature-shadow;
+    }
+
+    .feature svg {
+        fill: $feature-svg;
+    }
+
+    .font-list {
+        background: $font-list;
+        border: 1px solid $feature-border;
+    }
+
+    .font-item:hover {
+        background: $primary;
+        color: $white;
+    }
 
 }

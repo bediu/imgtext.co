@@ -64,6 +64,10 @@ export default new Vuex.Store({
       base64: null
     },
 
+    fontsLoaded: false,
+    text: [],
+    background: []
+
   },
   mutations: {
 
@@ -87,34 +91,33 @@ export default new Vuex.Store({
 
     //editor settings
     setZoom(state, zoom) {
-      
+
       state.imageFile.zoom.state = true;
       state.imageFile.zoom.value = parseInt(zoom.value);
       state.imageFile.size.h = zoom.h;
       state.imageFile.size.w = zoom.w;
       state.imageFile.draggable = zoom.shouldDrag;
-      
-      canvasDraw(state.canvasElement, 
-        state.canvasContext, 
-        state.imageFile.raw, 
-        zoom.h, 
+
+      canvasDraw(state.canvasElement,
+        state.canvasContext,
+        state.imageFile.raw,
+        zoom.h,
         zoom.w);
 
     },
     setImgFitToEditor(state) {
-      
-      state.imageFile.size
-       = calculateFitSize(state.editorElement.offsetHeight - 150, 
-                           state.editorElement.offsetWidth - 150,
-                           state.imageFile.realSize.h, 
-                           state.imageFile.realSize.w);
-      
+
+      state.imageFile.size = calculateFitSize(state.editorElement.offsetHeight - 150,
+        state.editorElement.offsetWidth - 150,
+        state.imageFile.realSize.h,
+        state.imageFile.realSize.w);
+
       canvasDraw(state.canvasElement,
-        state.canvasContext, 
-        state.imageFile.raw, 
-        state.imageFile.fitSize.h, 
+        state.canvasContext,
+        state.imageFile.raw,
+        state.imageFile.fitSize.h,
         state.imageFile.fitSize.w);
-      
+
       state.imageFile.size = {
         h: state.imageFile.fitSize.h,
         w: state.imageFile.fitSize.w
@@ -124,16 +127,16 @@ export default new Vuex.Store({
       state.imageFile.fit = true;
       state.imageFile.zoom.state = false;
       state.imageFile.zoom.value = 5;
-      
+
     },
     setImgRealSize(state) {
 
-      canvasDrawRealSize(state.canvasElement, 
+      canvasDrawRealSize(state.canvasElement,
         state.canvasContext,
-        state.imageFile.raw, 
-        state.editorElement.offsetHeight, 
+        state.imageFile.raw,
+        state.editorElement.offsetHeight,
         state.editorElement.offsetWidth,
-        state.imageFile.realSize.h, 
+        state.imageFile.realSize.h,
         state.imageFile.realSize.w);
 
       state.imageFile.size = {
@@ -157,9 +160,9 @@ export default new Vuex.Store({
         side,
         state.imageFile.flipX,
         state.imageFile.flipY);
-        
-        state.imageFile.flipX = flip.x;
-        state.imageFile.flipY = flip.y;
+
+      state.imageFile.flipX = flip.x;
+      state.imageFile.flipY = flip.y;
 
     }
 
@@ -186,16 +189,27 @@ export default new Vuex.Store({
 
     //main image init
     initImage(state, image) {
-      
+
       this.state.imageFile = image;
       canvasDraw(
-        this.state.canvasElement, 
+        this.state.canvasElement,
         this.state.canvasContext,
-        this.state.imageFile.raw, 
-        this.state.imageFile.fitSize.h, 
+        this.state.imageFile.raw,
+        this.state.imageFile.fitSize.h,
         this.state.imageFile.fitSize.w);
+
+    },
+
+    loadFonts(state) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = '/css/font-faces.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
       
-    }
+      this.state.fontsLoaded = true;
     
+    }
+
   }
 })

@@ -1,0 +1,52 @@
+.font-select {
+    cursor: pointer;
+}
+
+.font-dd {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 7;
+}
+
+.font-list {
+    position: absolute;
+    display: none;
+    top: 41px;
+    left: 0px;
+    width: 95%;
+    transition: all .2s;
+    z-index: 0;
+    height: 100px;
+    max-height: 100px;
+    overflow-y: scroll;
+}
+
+.font-list-show {
+    display: block;
+    z-index: 9;
+}
+
+.font-item {
+    display: block;
+    width: 100%;
+    height: 35px;
+}
+
+.font-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px;
+    cursor: pointer;
+    transition: all .1s;
+}
+
+.font-item>p {
+    text-align: left;
+    width: 100%;
+    padding-left: 15px;
+}

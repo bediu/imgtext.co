@@ -1,0 +1,45 @@
+ 
+@font-face {
+	font-family: 'CooperHewitt-Heavy';
+	src: url('/fonts/CooperHewitt-Heavy.otf') format('opentype');
+}
+@font-face {
+	font-family: 'ArchivoBlack';
+	src: url('/fonts/ArchivoBlack.otf') format('opentype');
+}
+@font-face {
+	font-family: 'WorkSans-ExtraBold';
+	src: url('/fonts/WorkSans-ExtraBold.otf') format('opentype');
+}
+@font-face {
+	font-family: 'nimbus-sans-l_bold';
+	src: url('/fonts/nimbus-sans-l_bold.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Oswald-Bold';
+	src: url('/fonts/Oswald-Bold.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Poppins-Medium';
+	src: url('/fonts/Poppins-Medium.otf') format('opentype');
+}
+@font-face {
+	font-family: 'LibreBaskerville-Regular';
+	src: url('/fonts/LibreBaskerville-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'EBGaramond12-Regular';
+	src: url('/fonts/EBGaramond12-Regular.otf') format('opentype');
+}
+@font-face {
+	font-family: 'Aileron-UltraLight';
+	src: url('/fonts/Aileron-UltraLight.otf') format('opentype');
+}
+@font-face {
+	font-family: 'WorkSans-Light';
+	src: url('/fonts/WorkSans-Light.otf') format('opentype');
+}
+@font-face {
+	font-family: 'OfficeCodePro-Light';
+	src: url('/fonts/OfficeCodePro-Light.otf') format('opentype');
+}

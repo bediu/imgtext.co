@@ -1,0 +1,32 @@
+.feature {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    width: 250px;
+    padding-bottom: 14px;
+    
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border-radius: 4px;
+    z-index: 8;
+}
+
+.feature > .title {
+    padding: 14px 0px 14px 20px;
+}
+.feature .btn-i {
+    height: 36px !important;
+    width: 33px !important;
+}
+
+
+
+.feature-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 100%;
+}

@@ -3,15 +3,15 @@
   <div class="editor" id="imgEditor">
 
     <Uploader />
-    <ImagePreview />
 
+    <CanvasPreview />
+    <AddText/>
     <!-- settings -->
     <div class="editor-footer">
       <SaveAndReset/>
       <Flip />
       <Zoom />
       <Size />
-
     </div>
 
 
@@ -21,7 +21,9 @@
 
 <script>
   import Uploader from './Uploader.vue'
-  import ImagePreview from './ImagePreview.vue'
+  import CanvasPreview from './CanvasPreview.vue'
+
+  import AddText from './features/AddText'
 
   import SaveAndReset from './settings/SaveAndReset.vue'
   import Flip from './settings/Flip.vue'
@@ -32,7 +34,8 @@
     name: 'Editor',
     components: {
       Uploader,
-      ImagePreview,
+      CanvasPreview,
+      AddText,
       SaveAndReset,
       Flip,
       Zoom,

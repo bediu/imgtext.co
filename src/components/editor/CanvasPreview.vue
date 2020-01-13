@@ -11,7 +11,7 @@
   } from './../../js/methods/canvas'
 
   export default {
-    name: 'ImagePreview',
+    name: 'CanvasPreview',
     data() {
       return {
         isDragging: false,
