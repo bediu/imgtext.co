@@ -53,10 +53,11 @@
 
 //actual elements
 .element-active {
-    border: 2px dashed white;
+    outline: 2px dashed white !important;
 }
+
 .element-active:hover {
-    border: 2px dashed white !important;
+    outline: 2px dashed white !important;
     cursor: grab !important;
 }
 
@@ -66,10 +67,11 @@
     font-size: 35px;
     padding: 13px;
     margin: 0px;
-    white-space: pre-line;
+    transition: outline .15s;
+    outline: 2px dashed transparent;
 }
 
 .text-element:hover {
-    border: 2px dashed rgba(white, 0.5);   
+    outline: 2px dashed rgba(white, 0.5);   
     cursor: pointer;
 }

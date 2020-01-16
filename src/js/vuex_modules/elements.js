@@ -41,8 +41,8 @@ export const elementsModule = {
             state.list.find(element => element.id === state.activeId).lineHeight = lineHeight;
         },
         setElementPositionA(state, data) {
-            state.list.find(element => data.id === state.activeId).x = data.x;
-            state.list.find(element => data.id === state.activeId).y = data.y;
+            state.list.find(() => data.id === state.activeId).x = data.x;
+            state.list.find(() => data.id === state.activeId).y = data.y;
         }
 
     }

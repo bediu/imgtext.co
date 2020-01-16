@@ -16,7 +16,6 @@
 
       <!-- feature elements -->
       <TextElement 
-        @click.native="elementClick(element.id)" 
         v-for="(element, index) in this.$store.getters['elements/textElements']" 
         :key="index"
         :elementData="element" />
@@ -89,15 +88,12 @@
 
     },
     methods: {
-      elementClick(id) {
-        if (this.$store.getters['elements/activeElementId'] !== id) {
-          this.$store.commit('elements/setActiveElement', id);
-        }
-      },
+
       canvasClick() {
         if (this.$store.getters['elements/activeElementId'] !== false) {
           this.$store.commit('elements/setActiveElement', false);
         }
+        
       },
 
 
