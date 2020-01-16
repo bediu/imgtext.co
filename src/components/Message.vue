@@ -1,12 +1,12 @@
 <template>
     <div class="message" :class="{
-        'error' : this.$store.state.message.type === 'error',
-        'success' : this.$store.state.message.type === 'success',
-        'warning' : this.$store.state.message.type === 'warning',
-        'info' : this.$store.state.message.type === 'info',
-        'message-show' : this.$store.state.message.show
+        'error' : this.$store.getters['message/type'] === 'error',
+        'success' : this.$store.getters['message/type'] === 'success',
+        'warning' : this.$store.getters['message/type'] === 'warning',
+        'info' : this.$store.getters['message/type'] === 'info',
+        'message-show' : this.$store.getters['message/show']
     }">
-        <p class="desc">{{this.$store.state.message.text}}</p>
+        <p class="desc">{{this.$store.getters['message/text']}}</p>
         <svg @click="hideMessage" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             version="1.1" id="mdi-close-circle" width="24" height="24" viewBox="0 0 24 24">
             <path
@@ -17,18 +17,9 @@
 <script>
     export default {
         name: 'Message',
-        components: {},
-        computed: {},
-        created() {
-
-        },
         methods: {
             hideMessage() {
-                this.$store.dispatch('showMessage', {
-                    type: null,
-                    text: null,
-                    show: false
-                });
+                this.$store.dispatch('message/hide');
             }
         }
     }

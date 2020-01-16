@@ -24,22 +24,10 @@ export function calculateFitSize(editorHeight,
 
 }
 
-export function calculateZoomSize(positive, target, curH, curW) {
-    if (positive) {
-        return {
-            h: curH * (1 + (10 * (target - 5) / 100)),
-            w: curW * (1 + (10 * (target - 5) / 100))
-        }
-    }
-    return {
-        h: curH * (1 - (10 * (5 - target) / 100)),
-        w: curW * (1 - (10 * (5 - target) / 100))
-    }
-}
-
-export function shouldDrag(h, w, editorH, editorW) {
-    if (h > editorH || w > editorW) {
-        return true;
-    } 
-    return false;
-}
+//note: possible collisions due to math.random
+export function new_uuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }

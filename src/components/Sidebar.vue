@@ -1,8 +1,8 @@
 <template>
 
-  <div class="sidebar" :class="{'sidebar-dis' : !this.$store.state.imageFile.state}">
+  <div class="sidebar" :class="{'sidebar-dis' : !this.$store.getters['image/loaded']}">
 
-    <div class="side-item">
+    <div class="side-item" @click="addText">
       <svg class="side-ico" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
         id="mdi-format-text" width="24" height="24" viewBox="0 0 24 24">
         <path
@@ -37,10 +37,25 @@
 </template>
 
 <script>
+  import { new_uuid } from '../js/methods/helpers';
+
   export default {
     name: 'Sidebar',
-    components: {
-
+    methods: {
+      addText() {
+        this.$store.commit('elements/newElement', {
+          type: 'text',
+          x: 50,
+          y: 50,
+          text: 'SAMPLE TEXT',
+          fontIndex: 0,
+          fontSize: 35,
+          color: [255,255,255],
+          lineHeight: 35,
+          direction: 'ltr',
+          id: new_uuid()
+        });
+      }
     }
   }
 </script>

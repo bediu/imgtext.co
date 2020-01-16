@@ -35,7 +35,7 @@
     },
     methods: {
       navMenu() {
-        this.$store.commit('sidebarInit');
+        this.$store.commit('sidebar');
       }
     }
   }

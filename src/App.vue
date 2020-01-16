@@ -5,7 +5,7 @@
     <Nav/>
     <Message/>
     
-    <div class="base" :class="{'sidebar-open' : sidebarState}">
+    <div class="base" :class="{'sidebar-open' : this.$store.getters.sidebar}">
       <Sidebar />
       <Editor />
     </div>
@@ -29,16 +29,11 @@ export default {
       Editor,
       Message
   },
-  computed: {
-    sidebarState() {
-      return this.$store.state.sidebarState
-    },
-  },
   created() {
     
     //open sidebar after 100ms
     setTimeout(() => {
-      this.$store.commit('sidebarInit');
+      this.$store.commit('sidebar');
     }, 100);
 
   }

@@ -14,9 +14,17 @@
     padding: 19px 8px 6px;
     font-size: $desc;
 }
-.text-input > .label {
-    position: absolute;
-    top: 3px;
-    left: 6px;
-    font-size: $label;
+
+.text-input > textarea {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    height: 50px;
+    transition: all .3s;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    padding: 10px 0px 0px 8px;
+    font-size: $desc;
+    margin-top: 18px;
+    resize: none;
 }

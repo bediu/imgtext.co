@@ -1,6 +1,16 @@
+.canvas-wrapper {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%) rotateX(0deg) rotateY(0deg);
+  transition: all .2s ease-in-out;
+  z-index: 4;
+  overflow: hidden;
+}
+
 .canvas {
     position: absolute;
-    top: calc(50% - 35px);
+    top: 50%;
     left: 50%;
     transform: translateY(-50%) translateX(-50%) rotateX(0deg) rotateY(0deg);
     transition: all .2s ease-in-out;
@@ -9,9 +19,6 @@
 
 .canvas-anim {
     animation: anim 0.1s linear;
-}
-.canvas-drag {
-  cursor: grab;
 }
 
 @keyframes anim {

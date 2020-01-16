@@ -1,0 +1,75 @@
+//element properties
+.element-properties {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    width: 250px;
+    padding-bottom: 14px;
+    
+    right: 20px;
+
+    border-radius: 8px;
+    z-index: 8;
+}
+
+.element-properties > .title {
+    padding: 14px 0px 14px 20px;
+}
+.element-properties .btn-i {
+    height: 36px !important;
+    width: 33px !important;
+}
+
+.property-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.color-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    align-items: flex-end;
+    height: 50px;
+    margin-top: 10px;
+}
+.color {
+    cursor: pointer;
+    width: 27px;
+    height: 27px;
+    margin-left: 5px;
+    border-radius: 4px;
+}
+.color-pick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+}
+
+
+//actual elements
+.element-active {
+    border: 2px dashed white;
+}
+.element-active:hover {
+    border: 2px dashed white !important;
+    cursor: grab !important;
+}
+
+.text-element {
+    position: absolute;
+    z-index: 8;
+    font-size: 35px;
+    padding: 13px;
+    margin: 0px;
+    white-space: pre-line;
+}
+
+.text-element:hover {
+    border: 2px dashed rgba(white, 0.5);   
+    cursor: pointer;
+}

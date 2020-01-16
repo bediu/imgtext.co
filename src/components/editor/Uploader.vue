@@ -1,7 +1,7 @@
 <template>
 
-  <div class="editor-drop" :class="{'editor-drag' : this.$store.state.newFileDrag}" @drop.prevent="fileDrop"
-    @dragover.prevent="fileDrag" @dragleave.prevent="fileLeave" v-if="!this.$store.state.imageFile.state">
+  <div class="editor-drop" :class="{'editor-drag' : this.$store.getters.filedrag}" @drop.prevent="fileDrop"
+    @dragover.prevent="fileDrag" @dragleave.prevent="fileLeave" v-if="!this.$store.getters['image/loaded']">
     <div class="drop-content">
 
       <div class="d-info">
@@ -39,12 +39,10 @@
   import {
     calculateFitSize
   } from '../../js/methods/helpers';
+  import ColorThief from '../../js/colorthief'
 
   export default {
     name: 'Uploader',
-    components: {
-
-    },
     methods: {
 
       //browse manually
@@ -65,7 +63,7 @@
 
         //verify image
         if (!this.isImage(fType)) {
-          this.$store.dispatch('showMessage', {
+          this.$store.dispatch('message/show', {
             type: 'error',
             text: 'Not an image file! Supported file types are: JPG, BMP, PNG, WEBP',
             show: true
@@ -75,7 +73,7 @@
 
         //warn if image >5mb
         if (this.isLargerThan5MB(fSize)) {
-          this.$store.dispatch('showMessage', {
+          this.$store.dispatch('message/show', {
             type: 'warning',
             text: 'Image is bigger than 5MB, the app might perform slower than intended',
             show: true
@@ -108,23 +106,23 @@
 
       //drag and drop
       fileDrag() {
-        if (!this.$store.state.newFileDrag) {
-          this.$store.commit('setNewFileDrag', true);
+        if (!this.$store.getters.filedrag) {
+          this.$store.commit('filedrag', true);
         }
       },
       fileLeave() {
-        if (this.$store.state.newFileDrag) {
-          this.$store.commit('setNewFileDrag', false);
+        if (this.$store.getters.filedrag) {
+          this.$store.commit('filedrag', false);
         }
       },
       fileDrop(e) {
-        if (!this.$store.state.newFile) {
-          this.$store.commit('setNewFileDrag', false);
+        if (this.$store.getters.filedrag) {
+          this.$store.commit('filedrag', false);
           var droppedFiles = e.dataTransfer.files;
 
           //failed to read dropped file
           if (droppedFiles.length === 0) {
-            this.$store.dispatch('showMessage', {
+            this.$store.dispatch('message/show', {
               type: 'warning',
               text: 'Could not read dragged file, try using the "Browse" button',
               show: true
@@ -134,7 +132,7 @@
 
           //prevent dropping >1 images at once
           if (droppedFiles.length > 1) {
-            this.$store.dispatch('showMessage', {
+            this.$store.dispatch('message/show', {
               type: 'error',
               text: 'Error: You tried to upload two images at once!',
               show: true
@@ -147,7 +145,7 @@
 
           //verify image
           if (!this.isImage(fType)) {
-            this.$store.dispatch('showMessage', {
+            this.$store.dispatch('message/show', {
               type: 'error',
               text: 'Not an image file! Supported file types are: JPG, BMP, PNG, WEBP',
               show: true
@@ -157,7 +155,7 @@
 
           //warn if >5mb
           if (this.isLargerThan5MB(fSize)) {
-            this.$store.dispatch('showMessage', {
+            this.$store.dispatch('message/show', {
               type: 'warning',
               text: 'Image is bigger than 5MB, the app might perform slower than intended',
               show: true
@@ -236,43 +234,26 @@
       loadImage(image) {
 
         //get editor size
-        var editorHeight = this.$store.state.editorElement.scrollHeight - 150; //150px padding
-        var editorWidth = this.$store.state.editorElement.scrollWidth - 150; //150px padding
+        var editorHeight = this.$store.getters['image/editor'].scrollHeight - 80;
+        var editorWidth = this.$store.getters['image/editor'].scrollWidth - 80; //80px padding
 
         //calculate preview size
-        var fitSize = calculateFitSize(editorHeight, editorWidth, image.size.h, image.size.w);
+        var size = calculateFitSize(editorHeight, editorWidth, image.size.h, image.size.w);
 
-        this.$store.dispatch('initImage', {
-          state: true,
+        const colorThief = new ColorThief();
+
+        this.$store.commit('image/initialize', {
           name: image.name,
           length: image.length,
-          draggable: false,
-          fit: true,
-
-          flipX: 0,
-          flipY: 0,
-
-          realSize: {
-            h: image.size.h,
-            w: image.size.w
-          },
-          fitSize: {
-            h: fitSize.h,
-            w: fitSize.w
-          },
-          size: {
-            h: fitSize.h,
-            w: fitSize.w
-          },
-
-          zoom: {
-            value: 5,
-            state: false
-          },
-          
           type: image.type,
           raw: image.raw,
-          base64: image.base64
+          base64: image.base64,
+          size: size,
+          realSize: image.size,
+          colors: {
+            dominant: colorThief.getColor(image.raw),
+            palette: colorThief.getPalette(image.raw, 5, 10)
+          }
         });
 
       }

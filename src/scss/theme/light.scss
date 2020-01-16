@@ -40,13 +40,13 @@ $range-handler-disabled: #9ab1f3;
 //input
 $input: #f4f4f4;
 
-//features
-$feature: $white;
-$feature-border: $border;
-$feature-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+//elements
+$element: $white;
+$element-border: $border;
+$element-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
 0px 4px 5px 0px rgba(0, 0, 0, 0.14),
 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-$feature-svg: rgba($black, 0.6);
+$element-svg: rgba($black, 0.6);
 $font-list: $white;
 
 
@@ -305,17 +305,17 @@ $font-list: $white;
 
 
     //edit
-    .text-input>input {
+    .text-input>input, textarea {
         background: $white;
         color: $text;
         border-bottom: 1px solid $border;
     }
 
-    .text-input>input:hover {
+    .text-input>input:hover, textarea:hover {
         background: rgba($text, 0.1);
     }
 
-    .text-input>input:focus {
+    .text-input>input:focus, textarea:focus {
         border-bottom: 1px solid rgba($text, 1);
         background: rgba($text, 0.1);
     }
@@ -324,26 +324,32 @@ $font-list: $white;
         color: $text-light;
     }
 
-    .feature {
-        background: $feature;
-        border-top: 1px solid $feature-border;
-        border-bottom: 1px solid $feature-border;
-        border-left: 1px solid $feature-border;
-        box-shadow: $feature-shadow;
+    .element-properties {
+        background: $element;
+        border-top: 1px solid $element-border;
+        border-bottom: 1px solid $element-border;
+        border-left: 1px solid $element-border;
+        box-shadow: $element-shadow;
     }
 
-    .feature svg {
-        fill: $feature-svg;
+    .element-properties svg {
+        fill: $element-svg;
     }
 
     .font-list {
         background: $font-list;
-        border: 1px solid $feature-border;
+        border: 1px solid $element-border;
     }
 
     .font-item:hover {
         background: $primary;
         color: $white;
+    }
+
+    //colorpicker
+    .color-pick {
+        border: 1px solid $border;
+        box-shadow: 0px 0px 2px 0px $border;
     }
 
 }
