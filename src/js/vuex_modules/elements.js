@@ -43,6 +43,9 @@ export const elementsModule = {
         setElementPositionA(state, data) {
             state.list.find(() => data.id === state.activeId).x = data.x;
             state.list.find(() => data.id === state.activeId).y = data.y;
+        },
+        setElementColorA(state, color) {
+            state.list.find(element => element.id === state.activeId).color = color;
         }
 
     }

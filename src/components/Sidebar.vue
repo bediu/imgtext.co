@@ -29,7 +29,7 @@
         <img class="card-img" src="https://articled.io/favicon.ico" alt="">
       </div>
       <p class="desc desc-m">Web Push Notifications for Bloggers!</p>
-      <a class="link" href="https://articled.io" target="_blank" rel="dofollow noopener">Click Here</a>
+      <a class="link" href="https://articled.io" target="_blank" rel="dofollow noopener">Integrate Now</a>
     </div>
 
   </div>
@@ -50,7 +50,7 @@
           text: 'SAMPLE TEXT',
           fontIndex: 0,
           fontSize: 35,
-          color: [255,255,255],
+          color: '#ffffff',
           lineHeight: 35,
           direction: 'ltr',
           id: new_uuid()

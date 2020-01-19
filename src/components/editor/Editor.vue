@@ -24,6 +24,7 @@
 
     <!-- element properties -->
     <TextProperties
+      :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
       v-if="this.$store.getters['elements/activeElementId'] !== false 
          && this.$store.getters['elements/activeElement'].type === 'text'"/>
 

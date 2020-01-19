@@ -39,6 +39,10 @@
   import {
     calculateFitSize
   } from '../../js/methods/helpers';
+  import {
+    rgba_to_hex
+  } from './../../js/colorconvert';
+
   import ColorThief from '../../js/colorthief'
 
   export default {
@@ -240,7 +244,15 @@
         //calculate preview size
         var size = calculateFitSize(editorHeight, editorWidth, image.size.h, image.size.w);
 
+        //get dominant & image palette in hex
         const colorThief = new ColorThief();
+        var rgbaDominant = colorThief.getColor(image.raw);
+        var dominant = rgba_to_hex([rgbaDominant[0], rgbaDominant[1], rgbaDominant[2]]);
+        var rgbaPalette = colorThief.getPalette(image.raw, 5, 10);
+        var palette = [];
+        for (var i =0; i < rgbaPalette.length; i++) {
+          palette.push(rgba_to_hex([rgbaPalette[i][0],rgbaPalette[i][1],rgbaPalette[i][2]]))
+        }
 
         this.$store.commit('image/initialize', {
           name: image.name,
@@ -251,8 +263,8 @@
           size: size,
           realSize: image.size,
           colors: {
-            dominant: colorThief.getColor(image.raw),
-            palette: colorThief.getPalette(image.raw, 5, 10)
+            dominant: dominant,
+            palette: palette
           }
         });
 

@@ -8,7 +8,7 @@
             lineHeight: elementData.lineHeight + 'px',
             fontSize: elementData.fontSize + 'px',
             fontFamily: this.$store.getters.fonts[elementData.fontIndex].family,
-            color: 'rgb(' + elementData.color + ')',
+            color: elementData.color,
             zIndex: elementData.id === this.$store.getters['elements/activeElementId'] ? 8 : 7
         }" @mousedown.prevent="mouseDown" @mouseup.prevent="mouseUp" @mousemove.prevent="mouseMove"
         @mouseleave.prevent="mouseUp">{{elementData.text}}</pre>

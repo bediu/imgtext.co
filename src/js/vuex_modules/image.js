@@ -49,7 +49,14 @@ export const imageModule = {
         },
         editor(state) {
             return state.editor;
+        },
+        palette(state) {
+            return state.colors.palette;
+        },
+        dominantColor(state) {
+            return state.colors.dominant;
         }
+
     },
     mutations: {
 

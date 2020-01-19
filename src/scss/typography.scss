@@ -48,3 +48,9 @@
     left: 6px;
     font-size: $label;
 }
+.label-d {
+	display: block !important;
+	position: relative !important;
+	top: unset !important;
+	margin-bottom: 5px;
+}

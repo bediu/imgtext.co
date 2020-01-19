@@ -26,29 +26,9 @@
     justify-content: space-between;
     padding: 10px 15px;
     width: 100%;
+    transition: all .25s linear;
 }
 
-.color-container {
-    display: flex;
-    position: relative;
-    width: 100%;
-    align-items: flex-end;
-    height: 50px;
-    margin-top: 10px;
-}
-.color {
-    cursor: pointer;
-    width: 27px;
-    height: 27px;
-    margin-left: 5px;
-    border-radius: 4px;
-}
-.color-pick {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50% !important;
-}
 
 
 //actual elements
@@ -75,3 +55,19 @@
     outline: 2px dashed rgba(white, 0.5);   
     cursor: pointer;
 }
+
+.property-anim {
+    animation: property_anim 0.25s linear;
+}
+
+@keyframes property_anim {
+    0% {
+      opacity: 0.5;
+      transform: translateX(10%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+  }
+  
