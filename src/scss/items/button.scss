@@ -40,6 +40,24 @@
     width: 24px;
     height: 24px;
 }
+.btn-o {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    font-size: $desc;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: background-color .3s;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.btn-o > svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 7px;
+}
 
 //button groups (flip etc)
 .btn-group {

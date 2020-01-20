@@ -46,6 +46,25 @@ export const elementsModule = {
         },
         setElementColorA(state, color) {
             state.list.find(element => element.id === state.activeId).color = color;
+        },
+
+        deleteElement(state, id) {
+            for (var i = 0; i < state.list.length; i++) {
+                if (state.list[i].id === id) {
+                    state.activeId = false;
+                    state.list.splice(i, 1);
+                    break;
+                }
+            }
+        },
+        deleteActiveElement(state) {
+            for (var i = 0; i < state.list.length; i++) {
+                if (state.list[i].id === state.activeId) {
+                    state.activeId = false;
+                    state.list.splice(i, 1);
+                    break;
+                }
+            }
         }
 
     }

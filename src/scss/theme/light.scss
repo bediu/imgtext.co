@@ -43,9 +43,10 @@ $input: #f4f4f4;
 //elements
 $element: $white;
 $element-border: $border;
-$element-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+$property-border-top: $primary;
+$element-shadow: 0 8.8px 13.8px rgba(0, 0, 0, 0.099),
+0 28px 80px rgba(0, 0, 0, 0.41)
+;
 $element-svg: rgba($black, 0.6);
 $font-list: $white;
 
@@ -97,8 +98,21 @@ $font-list: $white;
         background: rgba($primary, 0.7);
     }
 
+    .btn-o {
+        background: $white;
+        color: $primary;
+    }
+    .btn-o > svg {
+        fill: $primary !important;
+    }
 
+    .btn-o:hover {
+        background: rgba($black, 0.1);
+    }
 
+    .btn-o:active {
+        background-color: rgba($black, 0.2);
+    }
 
     //button groups
     .btn-i {
@@ -171,10 +185,6 @@ $font-list: $white;
 
     .d-info>svg {
         fill: $border;
-    }
-
-    .editor-footer {
-        background: rgba($app-bg, 0.95);
     }
 
 
@@ -326,8 +336,8 @@ $font-list: $white;
 
     .element-properties {
         background: $element;
-        border-top: 1px solid $element-border;
-        border-bottom: 1px solid $element-border;
+        border-top: 3px solid $property-border-top;
+        border-bottom: 3px solid $property-border-top;
         border-left: 1px solid $element-border;
         box-shadow: $element-shadow;
     }

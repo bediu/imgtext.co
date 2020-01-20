@@ -16,9 +16,9 @@
 
       <!-- feature elements -->
       <TextElement 
-        v-for="(element, index) in this.$store.getters['elements/textElements']" 
-        :key="index"
-        :elementData="element" />
+        v-for="element in this.$store.getters['elements/textElements']" 
+        :key="element.id"
+        :elementData="element"/>
 
     </div>
 
@@ -27,6 +27,8 @@
       :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
       v-if="this.$store.getters['elements/activeElementId'] !== false 
          && this.$store.getters['elements/activeElement'].type === 'text'"/>
+
+
 
     <!-- footer -->
     <div class="editor-footer">
@@ -94,7 +96,6 @@
         if (this.$store.getters['elements/activeElementId'] !== false) {
           this.$store.commit('elements/setActiveElement', false);
         }
-        
       },
 
 

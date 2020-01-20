@@ -43,10 +43,11 @@
     name: 'Sidebar',
     methods: {
       addText() {
+        
         this.$store.commit('elements/newElement', {
           type: 'text',
-          x: 50,
-          y: 50,
+          x: 20,
+          y: 20,
           text: 'SAMPLE TEXT',
           fontIndex: 0,
           fontSize: 35,
@@ -55,6 +56,7 @@
           direction: 'ltr',
           id: new_uuid()
         });
+
       }
     }
   }

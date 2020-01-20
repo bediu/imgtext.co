@@ -1,6 +1,6 @@
 <template>
     <div class="element-properties">
-        <p class="title">Text Properties</p>
+
 
         <!-- text -->
         <div class="property-container">
@@ -11,7 +11,7 @@
                 <textarea v-model="text" />
                 </div>
         </div>
-
+        
         <!-- font family -->
         <div class="property-container">
             <div class="text-input" @click="fontListShow">
@@ -34,7 +34,7 @@
 
             </div>
         </div>
-
+        
         <!-- font size -->
         <div class="property-container">
             <div class="text-input">
@@ -43,11 +43,7 @@
                 </span>
                 <input v-model="fontSize" type="number">
             </div>
-        </div>
-
-        <!-- line height -->
-        <div class="property-container">
-            <div class="text-input">
+             <div class="text-input">
                 <span class="label">
                     Line Height: 
                 </span>
@@ -55,6 +51,7 @@
             </div>
         </div>
 
+        <br>
         <!-- color input -->
         <div class="property-container">
             <div class="text-input">
@@ -78,6 +75,13 @@
             </div>
         </div>
 
+              
+        <div class="property-container">
+            <button class="btn-o" @click="deleteElement">
+                REMOVE
+            </button>
+            
+        </div>
 
     </div>
 </template>
@@ -159,6 +163,9 @@
            palettePick(color) {
                this.color = color; 
                this.updatePicker = true;
+           },
+           deleteElement() {
+               this.$store.commit('elements/deleteActiveElement');
            }
         },
         watch: {
