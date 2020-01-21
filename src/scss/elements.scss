@@ -56,6 +56,31 @@
     cursor: pointer;
 }
 
+.background-element {
+    position: absolute;
+    z-index: 5;
+    transition: outline .15s;
+    outline: 2px dashed transparent;
+}
+
+.background-element:hover {
+    outline: 2px dashed rgba(white, 0.5);   
+    cursor: pointer;
+}
+
+.background-move {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 2px;
+    right: 2px;
+    background: white;
+    height: 17px;
+    width: 17px;
+    cursor: pointer;
+}
+
 .property-anim {
     animation: property_anim 0.25s linear;
 }

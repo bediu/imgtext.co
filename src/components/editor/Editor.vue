@@ -1,6 +1,6 @@
 <template>
 
-  <div class="editor" id="imgEditor">
+  <div @click.self="deactivateElement" class="editor" id="imgEditor">
 
     <Uploader />
 
@@ -12,26 +12,37 @@
       }" class="canvas-wrapper">
 
       <!-- canvas -->
-      <CanvasPreview @click.native="canvasClick" />
+      <CanvasPreview @click.native="deactivateElement" />
 
       <!-- feature elements -->
-      <TextElement 
+      <ElementText 
         v-for="element in this.$store.getters['elements/textElements']" 
         :key="element.id"
         :elementData="element"/>
+        
+        <ElementBackground 
+        v-for="element in this.$store.getters['elements/backgroundElements']" 
+        :key="element.id"
+        :elementData="element"/>
+        
 
     </div>
 
     <!-- element properties -->
-    <TextProperties
+    <PropertiesText
       :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
       v-if="this.$store.getters['elements/activeElementId'] !== false 
          && this.$store.getters['elements/activeElement'].type === 'text'"/>
 
+    <PropertiesBackground
+      :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
+      v-if="this.$store.getters['elements/activeElementId'] !== false 
+         && this.$store.getters['elements/activeElement'].type === 'background'"/>
+
 
 
     <!-- footer -->
-    <div class="editor-footer">
+    <div @click.self="deactivateElement" class="editor-footer">
       <div class="btn-group btns-save" :class="{'btn-group-dis' : !this.$store.getters['image/loaded']}">
         <!-- save image -->
         <button class="btn-i btn-t btn-save" :disabled="!this.$store.getters['image/loaded']">
@@ -76,8 +87,11 @@
   import Uploader from './Uploader.vue'
   import CanvasPreview from './CanvasPreview.vue'
 
-  import TextProperties from './elements/properties/TextProperties'
-  import TextElement from './elements/TextElement'
+  import PropertiesText from './elements/properties/PropertiesText'
+  import PropertiesBackground from './elements/properties/PropertiesBackground'
+  import ElementText from './elements/ElementText'
+  import ElementBackground from './elements/ElementBackground'
+  
 
   export default {
     name: 'Editor',
@@ -86,13 +100,15 @@
 
       CanvasPreview,
 
-      TextProperties,
-      TextElement,
+      PropertiesText,
+      PropertiesBackground,
+      ElementText,
+      ElementBackground
 
     },
     methods: {
 
-      canvasClick() {
+      deactivateElement() {
         if (this.$store.getters['elements/activeElementId'] !== false) {
           this.$store.commit('elements/setActiveElement', false);
         }
@@ -106,6 +122,8 @@
       flipHorizontal() {
         this.$store.commit('image/flip', 'y');
       }
+
+
     },
     computed: {
  

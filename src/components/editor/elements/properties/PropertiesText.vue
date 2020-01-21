@@ -89,7 +89,7 @@
     import Picker from './../../Picker';
 
     export default {
-        name: 'TextProperties',
+        name: 'PropertiesText',
         components: {
             Picker
         },

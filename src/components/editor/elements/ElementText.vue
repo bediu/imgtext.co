@@ -16,7 +16,7 @@
 </template>
 <script>
     export default {
-        name: 'TextElement',
+        name: 'ElementText',
         props: ['elementData'],
         data() {
             return {
@@ -41,7 +41,7 @@
 
             },
             mouseUp() {
-
+                                
                 if (this.isDragging) {
                     this.isDragging = false;
 

@@ -14,6 +14,9 @@ export const elementsModule = {
         },
         textElements(state) {
             return state.list.filter(element => element.type === 'text');
+        },
+        backgroundElements(state) {
+            return state.list.filter(element => element.type === 'background');
         }
     },
     mutations: {
@@ -46,6 +49,10 @@ export const elementsModule = {
         },
         setElementColorA(state, color) {
             state.list.find(element => element.id === state.activeId).color = color;
+        },
+        setElementSizeA(state, data) {
+            state.list.find(() => data.id === state.activeId).h = data.w;
+            state.list.find(() => data.id === state.activeId).w = data.h;
         },
 
         deleteElement(state, id) {
