@@ -72,6 +72,10 @@ export const elementsModule = {
                     break;
                 }
             }
+        },
+        deleteAll(state) {
+            state.list = [];
+            state.activeId = false;
         }
 
     }

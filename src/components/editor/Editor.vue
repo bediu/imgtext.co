@@ -45,12 +45,12 @@
     <div @click.self="deactivateElement" class="editor-footer">
       <div class="btn-group btns-save" :class="{'btn-group-dis' : !this.$store.getters['image/loaded']}">
         <!-- save image -->
-        <button class="btn-i btn-t btn-save" :disabled="!this.$store.getters['image/loaded']">
+        <button @click="saveImage" class="btn-i btn-t btn-save" :disabled="!this.$store.getters['image/loaded']">
           SAVE
         </button>
 
         <!-- reset -->
-        <button class="btn-i" :disabled="!this.$store.getters['image/loaded']">
+        <button @click="resetImage" class="btn-i" :disabled="!this.$store.getters['image/loaded']">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
             id="mdi-delete-outline" width="24" height="24" viewBox="0 0 24 24">
             <path
@@ -116,6 +116,13 @@
 
 
       //image
+      saveImage() {
+
+      },
+      resetImage() {
+        this.$store.commit('image/delete');
+        this.$store.commit('elements/deleteAll')
+      },
       flipVertical() {
         this.$store.commit('image/flip', 'x');
       },

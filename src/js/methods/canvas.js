@@ -5,6 +5,11 @@ export function canvasDraw(canvas, context, rawImage, height, width) {
     context.drawImage(rawImage, 0, 0, width, height);
 }
 
+export function canvasClear(canvas) {
+    canvas.height = 0;
+    canvas.width = 0;
+    canvas.width = canvas.width;
+}
 export function canvasFlip(canvas, side, curX, curY) {
     
     if (side === 'x') {

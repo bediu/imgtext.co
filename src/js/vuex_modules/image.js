@@ -1,5 +1,4 @@
-import { canvasDraw, canvasFlip } from './../methods/canvas';
-import { elementsModule } from './elements';
+import { canvasDraw, canvasClear, canvasFlip } from './../methods/canvas';
 
 export const imageModule = {
     
@@ -85,6 +84,29 @@ export const imageModule = {
                 image.size.w);
 
         },
+        delete(state) {
+            state.loaded = false;
+            state.name = null;
+            state.length = null;
+            state.type = null;
+            state.base64 = null;
+            state.flipX = null;
+            state.flipY = null;
+            state.size = {
+                h: null,
+                w: null
+            };
+            state.realSize = {
+                h: null,
+                w: null
+            },
+            state.colors =  {
+                dominant: null,
+                palette: null
+            }
+            canvasClear(state.canvas);
+        },
+
 
         flip(state, side) {
             
@@ -108,7 +130,7 @@ export const imageModule = {
         },
         canvasContext(state, context) {
             state.canvasContext = context;
-        }
+        },
 
     },
     actions: {
