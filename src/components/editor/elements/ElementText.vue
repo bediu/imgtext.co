@@ -11,8 +11,12 @@
             color: elementData.color,
             zIndex: elementData.id === this.$store.getters['elements/activeElementId'] ? 8 : 7
         }" @mousedown.prevent="mouseDown" @mouseup.prevent="mouseUp" @mousemove.prevent="mouseMove"
-        @mouseleave.prevent="mouseUp">{{elementData.text}}</pre>
-    
+        @mouseleave.prevent="mouseUp" 
+        @touchstart.prevent="mouseDown"
+        @touchmove.prevent="mouseMove"
+        @touchend.prevent="mouseUp"
+        >{{elementData.text}}</pre>
+
 </template>
 <script>
     export default {
@@ -28,6 +32,7 @@
             }
         },
         methods: {
+
             mouseDown(e) {
 
                 if (this.$store.getters['elements/activeElementId'] !== this.elementData.id) {
@@ -41,7 +46,7 @@
 
             },
             mouseUp() {
-                                
+
                 if (this.isDragging) {
                     this.isDragging = false;
 
@@ -57,11 +62,21 @@
 
                 if (this.isDragging) {
 
-                    this.y = this.$refs.textElement.offsetTop - (this.offsetY - e.clientY);
-                    this.x = this.$refs.textElement.offsetLeft - (this.offsetX - e.clientX);
+                    var _clientY, _clientX;
 
-                    this.offsetY = e.clientY;
-                    this.offsetX = e.clientX;
+                    if (!e.clientX) {
+                        _clientX = e.touches[0].clientX;
+                        _clientY = e.touches[0].clientY;
+                    } else {
+                        _clientX = e.clientX;
+                        _clientY = e.clientY;
+                    }
+
+                    this.y = this.$refs.textElement.offsetTop - (this.offsetY - _clientY);
+                    this.x = this.$refs.textElement.offsetLeft - (this.offsetX - _clientX);
+
+                    this.offsetY = _clientY;
+                    this.offsetX = _clientX;
 
                 }
 

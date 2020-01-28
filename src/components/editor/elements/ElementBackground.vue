@@ -7,7 +7,8 @@
             height: this.h + 'px',
             backgroundColor: this.elementData.color,
             zIndex: elementData.id === this.$store.getters['elements/activeElementId'] ? 6 : 5
-        }" @mousedown.stop="mouseDown" @mouseup.stop="mouseUp" @mousemove.stop="mouseMove" @mouseleave.stop="mouseUp">
+        }" @mousedown.stop="mouseDown" @mouseup.stop="mouseUp" @mousemove.stop="mouseMove" @mouseleave.stop="mouseUp"
+        @touchstart.prevent="mouseDown" @touchmove.prevent="mouseMove" @touchend.prevent="mouseUp">
 
         <!-- resize -->
         <div v-if="this.elementData.id === this.$store.getters['elements/activeElementId']" class="background-move">
@@ -41,19 +42,33 @@
                     this.$store.commit('elements/setActiveElement', this.elementData.id);
                 }
 
-                if (e.offsetX > 19 && e.offsetY > 19) {
+                var _clientY, _clientX, _offsetX, _offsetY;
+
+                if (!e.clientX) {
+                    var rect = e.target.getBoundingClientRect();
+                    _clientX = e.touches[0].clientX;
+                    _clientY = e.touches[0].clientY;
+                    _offsetX = this._offset(e)[0];
+                    _offsetY = this._offset(e)[1];
+                } else {
+                    _clientX = e.clientX;
+                    _clientY = e.clientY;
+                    _offsetX = e.offsetX;
+                    _offsetY = e.offsetY;
+                }
+
+
+                if (_offsetX > 19 && _offsetY > 19) {
                     this.isDragging = true;
                 } else {
                     this.isResizing = true;
                 }
 
-                this.offsetX = e.clientX;
-                this.offsetY = e.clientY;
-
+                this.offsetX = _clientX;
+                this.offsetY = _clientY;
 
             },
             mouseUp() {
-
 
                 if (this.isDragging) {
 
@@ -80,19 +95,36 @@
             },
             mouseMove(e) {
 
+                var _clientY, _clientX;
+
+                if (!e.clientX) {
+                    _clientX = e.touches[0].clientX;
+                    _clientY = e.touches[0].clientY;
+                } else {
+                    _clientX = e.clientX;
+                    _clientY = e.clientY;
+                }
+
                 if (this.isDragging) {
-                    this.y = this.$refs.backgroundElement.offsetTop - (this.offsetY - e.clientY);
-                    this.x = this.$refs.backgroundElement.offsetLeft - (this.offsetX - e.clientX);
+                    this.y = this.$refs.backgroundElement.offsetTop - (this.offsetY - _clientY);
+                    this.x = this.$refs.backgroundElement.offsetLeft - (this.offsetX - _clientX);
                 }
 
                 if (this.isResizing) {
-                    this.w += e.clientX - this.offsetX;
-                    this.h += e.clientY - this.offsetY;
+                    this.w += _clientX - this.offsetX;
+                    this.h += _clientY - this.offsetY;
                 }
 
-                this.offsetY = e.clientY;
-                this.offsetX = e.clientX;
+                this.offsetY = _clientY;
+                this.offsetX = _clientX;
 
+            },
+            _offset(e) {
+                var rect = e.target.getBoundingClientRect();
+                var bodyRect = document.body.getBoundingClientRect();
+                var x = e.touches[0].pageX - (rect.left - bodyRect.left);
+                var y = e.touches[0].pageY - (rect.top - bodyRect.top);
+                return [x, y];
             }
         },
         mounted() {
