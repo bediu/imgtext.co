@@ -117,7 +117,7 @@
                    return this.$store.getters['elements/activeElement'].fontSize;
                },
                set(n) {
-                   this.$store.commit('elements/setElementFontSizeA', n);
+                   this.$store.commit('elements/setElementFontSizeA', parseInt(n));
                }
            },
            fontIndex: {
@@ -125,7 +125,7 @@
                    return this.$store.getters['elements/activeElement'].fontIndex;
                },
                set(n) {
-                   this.$store.commit('elements/setElementFontIndexA', n);
+                   this.$store.commit('elements/setElementFontIndexA', parseInt(n));
                }
            },
            lineHeight: {
@@ -133,7 +133,7 @@
                    return this.$store.getters['elements/activeElement'].lineHeight;
                },
                set(n) {
-                   this.$store.commit('elements/setElementLineHeightA', n);
+                   this.$store.commit('elements/setElementLineHeightA', parseInt(n));
                }
            },
            color: {

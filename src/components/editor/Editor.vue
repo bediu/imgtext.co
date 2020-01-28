@@ -15,38 +15,31 @@
       <CanvasPreview @click.native="deactivateElement" />
 
       <!-- feature elements -->
-      <ElementText 
-        v-for="element in this.$store.getters['elements/textElements']" 
-        :key="element.id"
-        :elementData="element"/>
-        
-        <ElementBackground 
-        v-for="element in this.$store.getters['elements/backgroundElements']" 
-        :key="element.id"
-        :elementData="element"/>
-        
+      <ElementText v-for="element in this.$store.getters['elements/textElements']" :key="element.id"
+        :elementData="element" />
+
+      <ElementBackground v-for="element in this.$store.getters['elements/backgroundElements']" :key="element.id"
+        :elementData="element" />
+
 
     </div>
 
     <!-- element properties -->
-    <PropertiesText
-      :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
-      v-if="this.$store.getters['elements/activeElementId'] !== false 
-         && this.$store.getters['elements/activeElement'].type === 'text'"/>
+    <PropertiesText :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }" v-if="this.$store.getters['elements/activeElementId'] !== false 
+         && this.$store.getters['elements/activeElement'].type === 'text'" />
 
-    <PropertiesBackground
-      :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }"
-      v-if="this.$store.getters['elements/activeElementId'] !== false 
-         && this.$store.getters['elements/activeElement'].type === 'background'"/>
+    <PropertiesBackground :class="{'property-anim' : this.$store.getters['elements/activeElementId'] !== false }" v-if="this.$store.getters['elements/activeElementId'] !== false 
+         && this.$store.getters['elements/activeElement'].type === 'background'" />
 
 
 
     <!-- footer -->
     <div @click.self="deactivateElement" class="editor-footer">
+
       <div class="btn-group btns-save" :class="{'btn-group-dis' : !this.$store.getters['image/loaded']}">
         <!-- save image -->
         <button @click="saveImage" class="btn-i btn-t btn-save" :disabled="!this.$store.getters['image/loaded']">
-          SAVE
+          DOWNLOAD
         </button>
 
         <!-- reset -->
@@ -91,7 +84,7 @@
   import PropertiesBackground from './elements/properties/PropertiesBackground'
   import ElementText from './elements/ElementText'
   import ElementBackground from './elements/ElementBackground'
-  
+
 
   export default {
     name: 'Editor',
@@ -118,6 +111,107 @@
       //image
       saveImage() {
 
+
+        //image data
+        var _img = {
+          name: this.$store.getters['image/name'],
+          type: this.$store.getters['image/type'],
+          raw: this.$store.getters['image/raw'],
+          size: this.$store.getters['image/size'],
+          realSize: this.$store.getters['image/realSize']
+        }
+        _img.ratio = {
+          h: (((_img.realSize.h - _img.size.h) / _img.size.h) * 100),
+          w: (((_img.realSize.w - _img.size.w) / _img.size.w) * 100)
+        }
+
+        var _text_elements = this.$store.getters['elements/textElements'];
+        var _background_elements = this.$store.getters['elements/backgroundElements'];
+
+        var _fonts = this.$store.getters.fonts;
+
+
+        //initialize canvas
+        var _canvas = document.createElement('canvas');
+        _canvas.width = _img.realSize.w;
+        _canvas.height = _img.realSize.h;
+        var _context = _canvas.getContext('2d');
+
+
+        //draw image
+        _context.drawImage(_img.raw, 0, 0, _img.realSize.w, _img.realSize.h);
+
+
+        //drag background
+        for (var i = 0; i < _background_elements.length; i++) {
+          var _element = _background_elements[i];
+
+          //determine position
+          var _x = _element.x + (_element.x * _img.ratio.w / 100);
+          var _y = _element.y + (_element.y * _img.ratio.h / 100);
+
+          //determine size
+          var _w = _element.w + (_element.w * _img.ratio.w / 100);
+          var _h = _element.h + (_element.h * _img.ratio.h / 100);
+
+          //draw
+          _context.fillStyle = _element.color;
+          _context.fillRect(_x, _y, _h, _w);
+
+        }
+
+
+        //draw text
+        for (var i = 0; i < _text_elements.length; i++) {
+
+          var _element = _text_elements[i];
+          var _text_lines = _text_elements[i].text.split('\n');
+
+          //for every line
+          for (var t = 0; t < _text_lines.length; t++) {
+            var _text = _text_lines[t];
+
+            //determine font size
+            var _font = Math.floor(_element.fontSize + (_element.fontSize * _img.ratio.h / 100));
+
+            //determine position
+            var _x = _element.x + (_element.x * _img.ratio.w / 100);
+            var _y = _element.y + (_element.y * _img.ratio.h / 100);
+
+            //account for line height
+            var _line_height = _element.lineHeight + (_element.lineHeight * _img.ratio.h / 100);
+            _y += _line_height / 2;
+
+            //account for element padding
+            var _padding_y = 13 + (13 * _img.ratio.h / 100);
+            var _padding_x = 13 + (13 * _img.ratio.w / 100);
+            _x += _padding_x;
+            _y += _padding_y;
+
+            //canvas draws text bottom up
+            _y += _font / 3;
+
+            //account for new lines
+            if (t > 0) {
+              _y += _line_height * t;
+            }
+
+            //draw  
+            _context.font = _font + 'px ' + _fonts[_element.fontIndex].family.replace(/'/g, '');
+            _context.fillStyle = _element.color;
+            _context.fillText(_text, _x, _y);
+
+          }
+
+        }
+
+        //start download
+        var _download = document.createElement('a');
+        _download.style.display = 'none';
+        _download.href = _canvas.toDataURL();
+        _download.download = 'imgtext.co-' + _img.name;
+        _download.click();
+
       },
       resetImage() {
         this.$store.commit('image/delete');
@@ -133,7 +227,7 @@
 
     },
     computed: {
- 
+
     },
     mounted() {
       //set editor element used to get height/width throughout the app

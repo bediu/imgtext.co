@@ -40,21 +40,45 @@ export const imageModule = {
         loaded(state) {
             return state.loaded;
         },
+        name(state) {
+            return state.name;
+        },
+        type(state) {
+            return state.type;
+        },
+        base64(state) {
+            return state.base64;
+        },
+        raw(state) {
+            return state.raw;
+        },
+        size(state) {
+            return state.size;
+        },
+        realSize(state) {
+            return state.realSize;
+        },
         height(state) {
             return state.size.h;
         },
         width(state) {
             return state.size.w;
         },
-        editor(state) {
-            return state.editor;
+        realWidth(state) {
+
+        },
+        realHeight(state) {
+
         },
         palette(state) {
             return state.colors.palette;
         },
         dominantColor(state) {
             return state.colors.dominant;
-        }
+        },
+        editor(state) {
+            return state.editor;
+        },
 
     },
     mutations: {

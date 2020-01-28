@@ -44,15 +44,15 @@ export const elementsModule = {
             state.list.find(element => element.id === state.activeId).lineHeight = lineHeight;
         },
         setElementPositionA(state, data) {
-            state.list.find(() => data.id === state.activeId).x = data.x;
-            state.list.find(() => data.id === state.activeId).y = data.y;
+            state.list.find(element => element.id === data.id).x = data.x;
+            state.list.find(element => element.id === data.id).y = data.y;
         },
         setElementColorA(state, color) {
             state.list.find(element => element.id === state.activeId).color = color;
         },
         setElementSizeA(state, data) {
-            state.list.find(() => data.id === state.activeId).h = data.w;
-            state.list.find(() => data.id === state.activeId).w = data.h;
+            state.list.find(element => element.id === data.id).h = data.w;
+            state.list.find(element => element.id === data.id).w = data.h;
         },
 
         deleteElement(state, id) {
