@@ -1,3 +1,6 @@
 - Make elements and element properties not rely on `activeId` when modifying the element
 - Element layer system & better UI for element properties
 - Add support for adding svgs over image such as material svg pack
+- Add multiple saving options
+    - webp, jpg, png
+    - image size
