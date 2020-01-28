@@ -32,9 +32,12 @@ export default {
   created() {
     
     //open sidebar after 100ms
-    setTimeout(() => {
+    if (window.screen.availWidth > 900) {
+      setTimeout(() => {
       this.$store.commit('sidebar');
     }, 100);
+
+    }
 
   }
 }

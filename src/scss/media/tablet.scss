@@ -1,0 +1,32 @@
+@media screen and (max-width: 900px) {
+
+    .sidebar {
+        position: absolute !important;
+        top: 0px;
+        left: 0px;
+    }
+    
+    .sidebar-open {
+        .editor {
+            width: 100% !important;
+        }
+    }
+
+    .element-properties {
+        width: 200px !important;
+    }
+    .color {
+        border-radius: 2px;
+        width: 16px;
+        height: 16px;
+    }
+    .btn {
+        padding: 5px 9px 5px 3px;
+    }
+    .desc-desktop {
+        display: none;
+    }
+    .desc-tablet {
+        display: unset;
+    }
+}

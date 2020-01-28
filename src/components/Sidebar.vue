@@ -68,6 +68,10 @@
           });
         }
 
+        if (window.screen.availWidth <= 900) {
+            this.$store.commit('sidebar');
+        }
+
 
       },
 
@@ -90,6 +94,12 @@
             show: true
           });
         }
+
+
+        if (window.screen.availWidth <= 900) {
+            this.$store.commit('sidebar');
+        }
+        
       }
 
     }

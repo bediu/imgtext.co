@@ -1,0 +1,21 @@
+@media screen and (max-width: 600px) {
+
+    .editor-drop {
+        width: calc(100% - 60px) !important;
+    }
+    .element-properties {
+        position: absolute;
+        bottom: 80px;
+    }
+
+    .d-info > svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .message {
+        right: 30px !important;
+        width: calc(100% - 60px) !important;
+    }
+
+}

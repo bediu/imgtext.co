@@ -8,7 +8,8 @@
 
         <div class="d-text">
           <p class="title">Upload an Image</p>
-          <p class="desc">Drag an image file here or click Browse</p>
+          <p class="desc desc-desktop">Drag an image file here or click Browse</p>
+          <p class="desc desc-tablet">Click browse to upload an image</p>
           <p class="overline d-over">JPG, JPEG, PNG, WEBP</p>
         </div>
         <svg class="d-svg-placeholder" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
