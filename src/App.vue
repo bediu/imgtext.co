@@ -1,6 +1,6 @@
 <template>
 
-  <div id="app" class="light">
+  <div id="app" :class="this.$store.getters['theme']">
     
     <Nav/>
     <Message/>

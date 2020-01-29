@@ -2,6 +2,9 @@
     display: block;
     width: 100%;
 }
+.picker * {
+    transition: unset !important;
+}
 .picker-container {
     overflow: hidden;
 }

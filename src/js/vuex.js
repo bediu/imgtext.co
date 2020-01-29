@@ -21,6 +21,7 @@ export default new Vuex.Store({
 
     sidebar: false,
     filedrag: false,
+    theme: 'light',
 
     fontsLoaded: false,
     fonts: [{
@@ -88,6 +89,9 @@ export default new Vuex.Store({
     },
     fonts(state) {
       return state.fonts;
+    },
+    theme(state) {
+      return state.theme
     }
   },
   mutations: {
@@ -97,6 +101,9 @@ export default new Vuex.Store({
     },
     filedrag(state, drag) {
       state.filedrag = drag;
+    },
+    theme(state, theme) {
+      state.theme = theme;
     }
 
   },

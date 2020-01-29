@@ -1,54 +1,74 @@
-//main colors
-$primary: #426ff4;
-$secondary: #badc58;
-
 //main app
 $border: #ccc; //#e3e3e3;
 $app-bg: #f2f2f2; //#f1f5f7;
-//F3F3F3
 
-//main font colors
+//font colors
 $text: #3b3f4f;
 $text-light: rgba($text, 0.8);
 $text-lighter: rgba($text, 0.7);
 $link: #2980b9;
 
+//nav
+$nav-bg: $white;
+$nav-text: $text;
+$nav-github: $text;
+
+//sidebar
+$sidebar-bg: $white;
+$sideitem-hover: rgba($black, 0.05);
+$sideitem-active: rgba($black, 0.02);
+$sideitem-ico: $primary;
+$sideitem-text: $text-light;
+$sideitem-text-disabled: $text-lighter;
+$sideitem-ico-disabled: rgba($primary, 0.7);
+
 //file upload
+$upload-bg: $white;
 $upload-border: #e3e3e3;
-$upload-svg-border: #ccc;
 $upload-border-size: 2px;
+$upload-border-drag: rgba($primary, 0.4);
+$upload-svg: $border;
 
-//group buttons
-$group-button: $white;
-$group-svg: rgba($text, 0.6);
-$group-border: $border;
+//buttons
+$btn-ico: $primary;
+$btn-bg: $primary;
+$btn-bg-hover: rgba($primary, 0.9);
+$btn-bg-active: rgba($primary, 0.7);
+$btn-color: $white;
+$btn-save-color: $text;
 
-//range
-$range-track: #e0e0e0;
-$range-track-hover: #c5c5c5;
-$range-handler: rgba($primary, 0.9);
-
-
-
-//disabled group buttons
-$group-button-disabled: #fff; //#e6e6e6;
-$group-svg-disabled: #bcbcbc;
-
-//disabled range
-$range-handler-disabled: #9ab1f3;
+//button groups
+$btn-group-border: $border;
+$btn-group-bg: $white;
+$btn-group-bg-hover: rgba($primary, 0.9);
+$btn-group-bg-active: rgba($primary, 0.7);
+$btn-group-svg: rgba($text, 0.6);
+$btn-group-bg-disabled: $white;
+$btn-group-svg-disabled: #bcbcbc;
 
 //input
-$input: #f4f4f4;
+$input-bg: $white;
+$input-text: $text;
+$input-hover: rgba($text, 0.1);
+$input-focus: rgba($text, 0.1);
+$input-border: $border;
+$input-border-focus: rgba($text, 1);
+$label: $text-light;
 
-//elements
-$element: $white;
-$element-border: $border;
-$property-border-top: $primary;
-$element-shadow: 0 8.8px 13.8px rgba(0, 0, 0, 0.099),
-0 28px 80px rgba(0, 0, 0, 0.41)
-;
-$element-svg: rgba($black, 0.6);
-$font-list: $white;
+//element properties
+$properties-bg: $white;
+$properties-border-vertical: $primary;
+$properties-border: $border;
+$properties-svg: rgba($black, 0.6);
+$properties-font-bg: $white;
+$properties-shadow: 0 8.8px 13.8px rgba(0, 0, 0, 0.099),
+0 28px 80px rgba(0, 0, 0, 0.41);
+$properties-font-hover: $primary;
+$properties-font-color-hover: $white;
+
+
+//colorpicker
+$picker-border: $border;
 
 
 .light {
@@ -61,12 +81,51 @@ $font-list: $white;
 
     //navigation
     .nav {
-        background: $white;
+        background: $nav-bg;
     }
 
     .nav-title {
-        color: $text;
+        color: $nav-text;
         font-weight: 600;
+    }
+
+    .btn-git {
+        fill: $nav-github !important;
+    }
+
+
+
+    //sidebar
+    .sidebar {
+        background: $sidebar-bg;
+        border-right: 1px solid $border;
+    }
+
+    .side-item:hover {
+        background: $sideitem-hover;
+    }
+
+    .side-item:active {
+        background: $sideitem-active;
+    }
+
+    .side-ico {
+        fill: $primary;
+    }
+
+    .side-text {
+        font-size: $desc;
+        color: $sideitem-text;
+    }
+
+    .sidebar-dis {
+        .side-text {
+            color: $sideitem-text-disabled !important;
+        }
+
+        .side-ico {
+            fill: $sideitem-ico-disabled !important;
+        }
     }
 
 
@@ -75,10 +134,6 @@ $font-list: $white;
     //buttons
     .btn-ico {
         fill: $primary;
-    }
-
-    .btn-git {
-        fill: $text !important;
     }
 
     .btn {
@@ -102,7 +157,8 @@ $font-list: $white;
         background: $white;
         color: $primary;
     }
-    .btn-o > svg {
+
+    .btn-o>svg {
         fill: $primary !important;
     }
 
@@ -114,80 +170,95 @@ $font-list: $white;
         background-color: rgba($black, 0.2);
     }
 
+
+
     //button groups
     .btn-i {
-        border-top: 1px solid $group-border;
-        border-bottom: 1px solid $group-border;
-        border-right: 1px solid $group-border;
-        background: $group-button;
-        color: $group-svg;
+        border-top: 1px solid $btn-group-border;
+        border-bottom: 1px solid $btn-group-border;
+        border-right: 1px solid $btn-group-border;
+        background: $btn-group-bg;
+        color: $btn-group-svg;
     }
 
     .btn-i>svg {
-        fill: $group-svg;
+        fill: $btn-group-svg;
     }
 
     .btn-group>button:first-child {
-        border-left: 1px solid $group-border;
+        border-left: 1px solid $btn-group-border;
     }
 
     .btn-i:hover {
-        background: rgba($black, 0.1);
+        background: $btn-group-bg-hover;
     }
 
     .btn-i:active {
-        background-color: rgba($black, 0.2);
+        background: $btn-group-bg-active;
     }
 
     .btn-save {
-        color: rgba($text, 1) !important;
+        color: $btn-save-color !important;
+    }
+
+    //disabled button group
+    .btn-group-dis {
+        .btn-i {
+            cursor: unset !important;
+            background: $btn-group-bg-disabled !important;
+            color: $btn-group-svg-disabled !important;
+        }
+
+        .btn-i:hover {
+            background: $btn-group-bg-disabled !important;
+        }
+
+        .btn-i>svg {
+            fill: $btn-group-svg-disabled !important;
+        }
     }
 
 
 
-
-    //sidebar
-    .sidebar {
-        background: $white;
-        border-right: 1px solid $border;
+    //input
+    .text-input>input,
+    textarea {
+        background: $input-bg;
+        color: $input-text;
+        border-bottom: 1px solid $input-border;
     }
 
-    .side-item:hover {
-        background: rgba($black, 0.05);
+    .text-input>input:hover,
+    textarea:hover {
+        background: $input-hover;
     }
 
-    .side-item:active {
-        background: rgba($black, 0.2);
+    .text-input>input:focus,
+    textarea:focus {
+        border-bottom: 1px solid $input-border-focus;
+        background: $input-focus;
     }
 
-    .side-ico {
-        fill: $primary;
+    .text-input>.label {
+        color: $label;
     }
-
-    .side-text {
-        font-size: $desc;
-        color: $text-light;
-    }
-
 
 
 
     //file upload
     .editor-drop {
         border: $upload-border-size solid $upload-border;
-        background: $white;
+        background: $upload-bg;
     }
 
     .editor-drag {
         opacity: 0.6;
-        border: 4px dashed rgba($primary, 0.4);
+        border: 4px dashed $upload-border-drag;
     }
 
     .d-info>svg {
-        fill: $border;
+        fill: $upload-svg;
     }
-
-
 
 
 
@@ -199,8 +270,6 @@ $font-list: $white;
     .overline {
         color: $text-lighter;
     }
-
-
 
     hr {
         display: block;
@@ -218,150 +287,41 @@ $font-list: $white;
 
 
 
-    //range slider
-    .range {
-        background: $range-track;
-    }
-
-    //range handdler
-    .range::-webkit-slider-thumb {
-        background: $range-handler;
-    }
-
-    .range::-moz-range-thumb {
-        background: $range-handler;
-    }
-
-    //track
-    .range:hover {
-        background: $range-track-hover;
-    }
-
-    ::-moz-range-track {
-        background: $range-track-hover;
-    }
-
-    .range-group svg {
-        fill: $group-svg;
-        cursor: pointer;
-    }
-
-
-
-
-    //disabled sidebar items
-    .sidebar-dis {
-        .side-text {
-            color: $text-lighter !important;
-        }
-
-        .side-ico {
-            fill: rgba($primary, 0.7) !important;
-        }
-    }
-
-    //disabled button group
-    .btn-group-dis {
-        .btn-i {
-            cursor: unset !important;
-            background: $group-button-disabled !important;
-            color: $group-svg-disabled !important;
-        }
-
-        .btn-i:hover {
-            background: $group-button-disabled !important;
-        }
-
-        .btn-i>svg {
-            fill: $group-svg-disabled !important;
-        }
-    }
-
-    //disabled range handdler
-    .range-group-dis {
-        .range::-webkit-slider-thumb {
-            background: $range-handler-disabled !important;
-            cursor: unset !important;
-        }
-
-        .range::-moz-range-thumb {
-            background: $range-handler-disabled !important;
-            cursor: unset !important;
-        }
-
-        .range::-moz-range-thumb:hover {
-            width: 17px !important;
-            height: 17px !important;
-        }
-
-        .range::-webkit-slider-thumb:hover {
-            width: 17px !important;
-            height: 17px !important;
-        }
-
-        //disabled range track
-        //track
-        .range:hover {
-            background: $range-track !important;
-        }
-
-        svg {
-            fill: $group-svg-disabled !important;
-            cursor: unset !important;
-        }
-
-    }
-
 
 
     //edit
-    .text-input>input, textarea {
-        background: $white;
-        color: $text;
-        border-bottom: 1px solid $border;
-    }
-
-    .text-input>input:hover, textarea:hover {
-        background: rgba($text, 0.1);
-    }
-
-    .text-input>input:focus, textarea:focus {
-        border-bottom: 1px solid rgba($text, 1);
-        background: rgba($text, 0.1);
-    }
-
-    .text-input>.label {
-        color: $text-light;
-    }
-
     .element-properties {
-        background: $element;
-        border-top: 3px solid $property-border-top;
-        border-bottom: 3px solid $property-border-top;
-        border-left: 1px solid $element-border;
-        box-shadow: $element-shadow;
+        background: $properties-bg;
+        border-top: 3px solid $properties-border-vertical;
+        border-bottom: 3px solid $properties-border-vertical;
+        border-left: 1px solid $properties-border;
+        box-shadow: $properties-shadow;
     }
 
     .element-properties svg {
-        fill: $element-svg;
+        fill: $properties-svg;
     }
 
     .font-list {
-        background: $font-list;
-        border: 1px solid $element-border;
+        background: $properties-font-bg;
+        border: 1px solid $properties-border;
     }
 
     .font-item:hover {
-        background: $primary;
-        color: $white;
+        background: $properties-font-hover;
+        color: $properties-font-color-hover;
     }
+
 
     //colorpicker
     .color-pick {
-        border: 1px solid $border;
-        box-shadow: 0px 0px 2px 0px $border;
+        border: 1px solid $picker-border;
+        box-shadow: 0px 0px 2px 0px $picker-border;
     }
-    .color { border: 1px solid $border; }
+
+    .color {
+        border: 1px solid $picker-border;
+    }
 
 
 }

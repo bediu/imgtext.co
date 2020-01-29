@@ -1,0 +1,334 @@
+//main app
+$border-dark: #35353a; //#e3e3e3;
+$app-bg-dark: #282c34; //#f1f5f7;
+
+//font colors
+$text-dark: #cccccc;
+$text-light-dark: rgba($text-dark, 0.8);
+$text-lighter-dark: rgba($text-dark, 0.7);
+$link-dark: #2980b9;
+
+//nav
+$nav-bg-dark: #21252b;
+$nav-text-dark: $text-dark;
+$nav-github-dark: $text-dark;
+
+//sidebar
+$sidebar-bg-dark: #21252b;
+$sideitem-hover-dark: rgba($white, 0.05);
+$sideitem-active-dark: rgba($white, 0.02);
+$sideitem-ico-dark: $primary;
+$sideitem-text-dark: $text-light-dark;
+$sideitem-text-disabled-dark: $text-lighter-dark;
+$sideitem-ico-disabled-dark: rgba($primary, 0.7);
+
+//file upload
+$upload-bg-dark: #282c34;
+$upload-border-dark: #828286;
+$upload-border-size-dark: 1px;
+$upload-border-drag-dark: rgba($primary, 0.4);
+$upload-svg-dark: rgba(#828286, 0.5);
+
+//buttons
+$btn-ico-dark: $primary;
+$btn-bg-dark: $primary;
+$btn-bg-hover-dark: rgba($btn-bg-dark, 0.9);
+$btn-bg-active-dark: rgba($btn-bg-dark, 0.7);
+$btn-color-dark: $white;
+$btn-save-color-dark: $white;
+
+//button groups
+$btn-group-border-dark: $border-dark;
+$btn-group-bg-dark: $primary;
+$btn-group-bg-hover-dark: rgba($primary, 0.9);
+$btn-group-bg-active-dark: rgba($primary, 0.7);
+$btn-group-svg-dark: $white;
+$btn-group-bg-disabled-dark: #565555;
+$btn-group-svg-disabled-dark: #bcbcbc;
+
+//input
+$input-bg-dark: #282c34;
+$input-text-dark: $text-dark;
+$input-hover-dark: rgba($text-dark, 0.1);
+$input-focus-dark: rgba($text-dark, 0.1);
+$input-border-dark: $border-dark;
+$input-border-focus-dark: rgba($text-dark, 1);
+$label-dark: $text-light-dark;
+
+//element properties
+$properties-bg-dark: #21252b;
+$properties-border-vertical-dark: $text-light-dark;
+$properties-border-dark: $border-dark;
+$properties-svg-dark: rgba($text-dark, 0.6);
+$properties-font-bg-dark: #282c34;
+$properties-shadow-dark: 0 8.8px 13.8px rgba(0, 0, 0, 0.099),
+0 28px 80px rgba(0, 0, 0, 0.41);
+$properties-font-hover-dark: $primary;
+$properties-font-color-hover-dark: $white;
+
+
+//colorpicker
+$picker-border-dark: $border-dark;
+
+
+.dark {
+
+    //app background
+    background: $app-bg-dark;
+    color: $text-dark;
+
+
+
+    //navigation
+    .nav {
+        background: $nav-bg-dark;
+    }
+
+    .nav-title {
+        color: $nav-text-dark;
+        font-weight: 600 !important;
+    }
+
+    .btn-git {
+        fill: $nav-github-dark !important;
+    }
+
+
+
+    //sidebar
+    .sidebar {
+        background: $sidebar-bg-dark;
+        border-right: 1px solid $border-dark;
+    }
+
+    .side-item:hover {
+        background: $sideitem-hover-dark;
+    }
+
+    .side-item:active {
+        background: $sideitem-active-dark;
+    }
+
+    .side-ico {
+        fill: $primary;
+    }
+
+    .side-text {
+        font-size: $desc;
+        color: $sideitem-text-dark;
+    }
+
+    .sidebar-dis {
+        .side-text {
+            color: $sideitem-text-disabled-dark !important;
+        }
+
+        .side-ico {
+            fill: $sideitem-ico-disabled-dark !important;
+        }
+    }
+
+
+
+
+    //buttons
+    .btn-ico {
+        fill: $primary;
+    }
+
+    .btn {
+        background: $btn-bg-dark;
+        color: $white;
+    }
+
+    .btn>svg {
+        fill: $white;
+    }
+
+    .btn:hover {
+        background: $btn-bg-hover-dark !important;
+    }
+
+    .btn:active {
+        background: $btn-bg-active-dark !important;
+    }
+
+    .btn-o {
+        background: $nav-bg-dark;
+        color: $text-dark;
+    }
+
+    .btn-o>svg {
+        fill: $primary !important;
+    }
+
+    .btn-o:hover {
+        background: rgba($text-dark, 0.1) !important;
+    }
+
+    .btn-o:active {
+        background-color: rgba($text-dark, 0.2) !important;
+    }
+
+
+    
+    //button groups
+    .btn-i {
+        border-top: 1px solid $btn-group-border-dark;
+        border-bottom: 1px solid $btn-group-border-dark;
+        border-right: 1px solid $btn-group-border-dark;
+        background: $btn-group-bg-dark;
+        color: $btn-group-svg-dark;
+    }
+
+    .btn-i>svg {
+        fill: $btn-group-svg-dark;
+    }
+
+    .btn-group>button:first-child {
+        border-left: 1px solid $btn-group-border-dark;
+    }
+
+    .btn-i:hover {
+        background: $btn-group-bg-hover-dark;
+    }
+
+    .btn-i:active {
+        background: $btn-group-bg-active-dark;
+    }
+
+    .btn-save {
+        color: $btn-save-color-dark !important;
+    }
+
+    //disabled button group
+    .btn-group-dis {
+        .btn-i {
+            cursor: unset-dark !important;
+            background: $btn-group-bg-disabled-dark !important;
+            color: $btn-group-svg-disabled-dark !important;
+        }
+
+        .btn-i:hover {
+            background: $btn-group-bg-disabled-dark !important;
+        }
+
+        .btn-i>svg {
+            fill: $btn-group-svg-disabled-dark !important;
+        }
+    }
+
+
+
+    //input
+    .text-input>input,
+    textarea {
+        background: $input-bg-dark;
+        color: $input-text-dark;
+        border-bottom: 1px solid $input-border-dark;
+    }
+
+    .text-input>input:hover,
+    textarea:hover {
+        background: $input-hover-dark;
+    }
+
+    .text-input>input:focus,
+    textarea:focus {
+        border-bottom: 1px solid $input-border-focus-dark;
+        background: $input-focus-dark;
+    }
+
+    .text-input>.label {
+        color: $label-dark;
+    }
+
+
+
+    //file upload
+    .editor-drop {
+        border: $upload-border-size-dark solid $upload-border-dark !important;
+        background: $upload-bg-dark;
+    }
+
+    .editor-drag {
+        opacity: 0.6-dark;
+        border: 4px dashed $upload-border-drag-dark;
+    }
+
+    .d-info>svg {
+        fill: $upload-svg-dark;
+    }
+
+
+
+    //typography
+    .desc {
+        color: $text-light-dark;
+    }
+
+    .overline {
+        color: $text-lighter-dark;
+    }
+
+    hr {
+        display: block;
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        border: 0px;
+        height: 1px;
+        background: $border-dark;
+    }
+
+    .link {
+        color: $link-dark;
+    }
+
+
+
+
+
+    //edit
+    .element-properties {
+        background: $properties-bg-dark;
+        border-top: 3px solid $properties-border-vertical-dark;
+        border-bottom: 3px solid $properties-border-vertical-dark;
+        border-left: 1px solid $properties-border-dark;
+        box-shadow: $properties-shadow-dark;
+    }
+
+    .element-properties svg {
+        fill: $properties-svg-dark;
+    }
+
+    .font-list {
+        background: $properties-font-bg-dark;
+        border: 1px solid $properties-border-dark;
+    }
+
+    .font-item:hover {
+        background: $properties-font-hover-dark;
+        color: $properties-font-color-hover-dark;
+    }
+
+
+    //colorpicker
+    .color-pick {
+        border: 1px solid $picker-border-dark;
+        box-shadow: 0px 0px 2px 0px $picker-border-dark;
+    }
+
+    .color {
+        border: 1px solid $picker-border-dark;
+    }
+
+
+    //ad
+    .card-img {
+        background: rgba($white, 0.7);
+        border-radius: 5px;
+    }
+
+
+}
