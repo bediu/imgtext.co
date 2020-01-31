@@ -1,19 +1,5 @@
-# add-text
+# imgtext.co
 
-## Project setup
-```
-npm install
-```
+Free tool for adding text over image with various features.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Built by [@bediu](https://github.com/bediu) in `vue` using `vue cli`.  
